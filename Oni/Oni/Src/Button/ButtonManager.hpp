@@ -64,9 +64,9 @@ namespace Oni
 		/// <summary>
 		/// ボタンを押したときの処理の設定
 		/// </summary>
-		/// <param name="name">        ボタンの名前     </param>
-		/// <param name="onClickFunc"> 押したときの処理 </param>
-		void setOnClickFunc(const String& name, ButtonOnClick onClickFunc);
+		/// <param name="name"   > ボタンの名前     </param>
+		/// <param name="onClick"> 押したときの処理 </param>
+		void setOnClick(const String& name, ButtonOnClick onClick);
 
 		/// <summary>
 		/// 選択中のボタンの取得
