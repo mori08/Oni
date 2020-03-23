@@ -83,6 +83,9 @@
     <Filter Include="Src">
       <UniqueIdentifier>{9ad35b47-3c70-4e35-b18a-66283bb05b00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Button">
+      <UniqueIdentifier>{e623c2df-4316-4b7b-b6a2-f5e96f298446}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -342,5 +345,10 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Button\Button.hpp">
+      <Filter>Src\Button</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
