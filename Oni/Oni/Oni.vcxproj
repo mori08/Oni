@@ -226,10 +226,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp" />
+    <ClInclude Include="Src\Button\ButtonManager.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
