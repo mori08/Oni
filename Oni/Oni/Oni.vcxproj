@@ -229,12 +229,14 @@
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\MyLibrary.cpp" />
+    <ClCompile Include="Src\Title\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp" />
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
     <ClInclude Include="Src\MyLibrary.hpp" />
     <ClInclude Include="Src\Scene.hpp" />
+    <ClInclude Include="Src\Title\TitleScene.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
