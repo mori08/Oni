@@ -1,13 +1,6 @@
 #include "TitleScene.hpp"
 
 
-namespace
-{
-	// タイトルロゴを表示する座標
-	constexpr Point TITLE_LOGO_POS(320, 100);
-}
-
-
 namespace Oni
 {
 
@@ -25,8 +18,7 @@ namespace Oni
 
 	void TitleScene::draw() const
 	{
-		Scene::Rect().draw(Color(30));
-		TextureAsset(U"TitleLogo").drawAt(TITLE_LOGO_POS);
+		TextureAsset(U"Title").draw();
 	}
 
 }
