@@ -28,6 +28,20 @@ namespace Oni
 	public:
 
 		/// <summary>
+		/// ボタン
+		/// </summary>
+		/// <param name="name">   名前 </param>
+		/// <param name="region"> 範囲 </param>
+		Button(const String& name, const Rect& region)
+			: mName(name)
+			, mRegion(region)
+			, mOnClick([](){})
+		{
+		}
+
+	public:
+
+		/// <summary>
 		/// ボタンの名前の取得
 		/// </summary>
 		/// <returns> ボタンの名前 </returns>
