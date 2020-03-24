@@ -16,6 +16,7 @@ void Main()
 	FontAsset::Register(U"20", 20, Typeface::Medium);
 	FontAsset::Register(U"30", 30, Typeface::Medium);
 	FontAsset::Register(U"40", 40, Typeface::Medium);
+	Oni::registerAsset(U"Asset/");
 
 	// ƒV[ƒ“‚ÌŠÇ—
 	MyApp sceneManager;
