@@ -234,6 +234,7 @@
     <ClInclude Include="Src\Button\Button.hpp" />
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
     <ClInclude Include="Src\MyLibrary.hpp" />
+    <ClInclude Include="Src\Scene.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
