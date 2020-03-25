@@ -374,5 +374,8 @@
     <ClInclude Include="Src\Title\TitleScene.hpp">
       <Filter>Src\Title</Filter>
     </ClInclude>
+    <ClInclude Include="Src\MyColor.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
