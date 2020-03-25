@@ -5,6 +5,12 @@
 namespace Oni
 {
 
+	Oni::ButtonManager::ButtonManager()
+		: mSelectedButtonPtr(nullptr)
+	{
+	}
+
+
 	void ButtonManager::registerButton(const String& name, const Rect& region)
 	{
 		mButtonMap[name] = std::make_shared<Button>(name, region);
