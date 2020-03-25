@@ -12,7 +12,11 @@ namespace Oni
 	/// </summary>
 	class TitleScene : public MyApp::Scene
 	{
-		
+	private:
+
+		// 選択中のボタンを指す長方形
+		RectF mCursor;
+
 	public:
 
 		TitleScene(const InitData& init);
