@@ -54,6 +54,20 @@ namespace Oni
 		void registerButton(const Button& button);
 
 		/// <summary>
+		/// ボタンの垂直方向の隣接関係の設定
+		/// </summary>
+		/// <param name="upName">   上側のボタンの名前 </param>
+		/// <param name="downName"> 下側のボタンの名前 </param>
+		void setVerticalAdjacentButton(const String& upName, const String& downName);
+
+		/// <summary>
+		/// ボタンの水平方向の隣接関係の設定
+		/// </summary>
+		/// <param name="leftName">  左側のボタンの名前 </param>
+		/// <param name="rightName"> 右側のボタンの名前 </param>
+		void setHorizontalAdjacentButton(const String& leftName, const String& rightName);
+
+		/// <summary>
 		/// 選択中のボタンの変更
 		/// </summary>
 		/// <param name="name"> ボタンの名前 </param>

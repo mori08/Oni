@@ -38,6 +38,9 @@ namespace Oni
 		ButtonManager::instance().registerButton(NEWGAME_BUTTON);
 		ButtonManager::instance().registerButton(CONTINUE_BUTTON);
 
+		// ボタンの位置関係の設定
+		ButtonManager::instance().setVerticalAdjacentButton(NEWGAME_BUTTON.getName(), CONTINUE_BUTTON.getName());
+
 		// 選択中のボタンの設定
 		ButtonManager::instance().setSelectedButton(CONTINUE_BUTTON.getName());
 	}
