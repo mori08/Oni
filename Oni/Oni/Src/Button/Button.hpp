@@ -25,7 +25,7 @@ namespace Oni
 		const Rect mRegion;
 
 		// 隣接ボタン
-		std::unordered_map<Key, ButtonPtr>  mAdjacentButtonMap;
+		std::list<std::pair<Key, ButtonPtr>> mAdjacentButtonMap;
 
 		// 押されたときの処理
 		ButtonOnClick mOnClick;
@@ -71,7 +71,7 @@ namespace Oni
 		/// <param name="buttonPtr"> 隣接するボタン </param>
 		void setAdjacentButton(const Key& key, ButtonPtr buttonPtr)
 		{
-			mAdjacentButtonMap[key] = buttonPtr;
+			mAdjacentButtonMap.emplace_back(key, buttonPtr);
 		}
 
 		/// <summary>
