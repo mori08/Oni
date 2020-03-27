@@ -6,6 +6,8 @@
 
 namespace Oni
 {
+	class Button;
+	using ButtonPtr     = std::shared_ptr<Button>;
 	using ButtonOnClick = std::function<void()>;
 
 	/// <summary>
@@ -21,6 +23,9 @@ namespace Oni
 
 		// 範囲
 		const Rect mRegion;
+
+		// 隣接ボタン
+		std::unordered_map<Key, ButtonPtr>  mAdjacentButtonMap;
 
 		// 押されたときの処理
 		ButtonOnClick mOnClick;
@@ -58,6 +63,24 @@ namespace Oni
 		{
 			return mRegion;
 		}
+
+		/// <summary>
+		/// 隣接するボタンの設定
+		/// </summary>
+		/// <param name="key"      > 対応するキー   </param>
+		/// <param name="buttonPtr"> 隣接するボタン </param>
+		void setAdjacentButton(const Key& key, ButtonPtr buttonPtr)
+		{
+			mAdjacentButtonMap[key] = buttonPtr;
+		}
+
+		/// <summary>
+		/// 入力に応じた隣接ボタンの取得
+		/// </summary>
+		/// <returns>
+		/// 入力に応じた隣接ボタン
+		/// </returns>
+		Optional<ButtonPtr> getAdjacentButton() const;
 
 		/// <summary>
 		/// 押したときの処理の設定

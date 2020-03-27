@@ -6,8 +6,6 @@
 
 namespace Oni
 {
-	using ButtonPtr = std::shared_ptr<Button>;
-
 	/// <summary>
 	/// Button‚ÌŠÇ—‘I‘ğ
 	/// </summary>

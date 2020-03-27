@@ -357,6 +357,7 @@
     <ClCompile Include="Src\Title\TitleScene.cpp">
       <Filter>Src\Title</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Button\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
