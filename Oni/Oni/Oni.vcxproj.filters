@@ -89,6 +89,9 @@
     <Filter Include="Src\Title">
       <UniqueIdentifier>{c88b592a-1572-4bf8-84e2-58cfe8ff1272}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Record">
+      <UniqueIdentifier>{ca547027-8631-4f1b-8f66-d2b0a396989c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -360,6 +363,7 @@
     <ClCompile Include="Src\Button\Button.cpp">
       <Filter>Src\Button</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Record\Record.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -379,6 +383,9 @@
     </ClInclude>
     <ClInclude Include="Src\MyColor.hpp">
       <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Record\Record.hpp">
+      <Filter>Src\Record</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

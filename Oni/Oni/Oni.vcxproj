@@ -230,6 +230,7 @@
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\MyLibrary.cpp" />
+    <ClCompile Include="Src\Record\Record.cpp" />
     <ClCompile Include="Src\Title\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +238,7 @@
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
     <ClInclude Include="Src\MyColor.hpp" />
     <ClInclude Include="Src\MyLibrary.hpp" />
+    <ClInclude Include="Src\Record\Record.hpp" />
     <ClInclude Include="Src\Scene.hpp" />
     <ClInclude Include="Src\Title\TitleScene.hpp" />
   </ItemGroup>
