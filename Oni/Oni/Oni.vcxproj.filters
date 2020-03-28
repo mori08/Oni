@@ -92,6 +92,9 @@
     <Filter Include="Src\Record">
       <UniqueIdentifier>{ca547027-8631-4f1b-8f66-d2b0a396989c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Load">
+      <UniqueIdentifier>{9194730c-1b8c-48ce-b8bd-a03cdf748601}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -366,7 +369,12 @@
     <ClCompile Include="Src\Record\Record.cpp">
       <Filter>Src\Record</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Record\RecordManager.cpp" />
+    <ClCompile Include="Src\Record\RecordManager.cpp">
+      <Filter>Src\Record</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Load\LoadScene.cpp">
+      <Filter>Src\Load</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -392,6 +400,9 @@
     </ClInclude>
     <ClInclude Include="Src\Record\RecordManager.hpp">
       <Filter>Src\Record</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Load\LoadScene.hpp">
+      <Filter>Src\Load</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
