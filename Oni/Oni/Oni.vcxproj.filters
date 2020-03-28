@@ -363,7 +363,10 @@
     <ClCompile Include="Src\Button\Button.cpp">
       <Filter>Src\Button</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Record\Record.cpp" />
+    <ClCompile Include="Src\Record\Record.cpp">
+      <Filter>Src\Record</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Record\RecordManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -385,6 +388,9 @@
       <Filter>Src</Filter>
     </ClInclude>
     <ClInclude Include="Src\Record\Record.hpp">
+      <Filter>Src\Record</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Record\RecordManager.hpp">
       <Filter>Src\Record</Filter>
     </ClInclude>
   </ItemGroup>
