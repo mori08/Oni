@@ -20,7 +20,7 @@ namespace Oni
 	}
 
 
-	void Record::addRecordToEncryptionList(std::list<uint32>& dataList) const
+	void Record::addRecordToEncryptionList(std::list<int32>& dataList) const
 	{
 		for (int32 i = 0; i < mDigit; ++i)
 		{
@@ -30,7 +30,7 @@ namespace Oni
 	}
 
 
-	void Record::setValueFromDecryption(std::list<uint32>& dataList)
+	void Record::setValueFromDecryption(std::list<int32>& dataList)
 	{
 		mValue = 0;
 

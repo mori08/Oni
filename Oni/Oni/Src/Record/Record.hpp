@@ -67,13 +67,13 @@ namespace Oni
 		/// 暗号化用のリストにこのレコードを追加
 		/// </summary>
 		/// <param name="dataList"> 暗号化用のリスト </param>
-		void addRecordToEncryptionList(std::list<uint32>& dataList) const;
+		void addRecordToEncryptionList(std::list<int32>& dataList) const;
 
 		/// <summary>
 		/// 復号可用のリストから値を設定
 		/// </summary>
 		/// <param name="dataList"> 復号化用のリスト </param>
-		void setValueFromDecryption(std::list<uint32>& dataList);
+		void setValueFromDecryption(std::list<int32>& dataList);
 
 		/// <summary>
 		/// 桁数の合計値の取得
