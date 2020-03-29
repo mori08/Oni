@@ -10,6 +10,8 @@ namespace
 
 namespace Oni
 {
+	int32 Record::sDigitTotal = 0;
+
 
 	Record::Record(int32 digit, int32 defaultValue)
 		: mDigit(Clamp(digit, 1, MAX_DIGIT))
