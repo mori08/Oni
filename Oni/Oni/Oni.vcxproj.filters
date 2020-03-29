@@ -95,6 +95,9 @@
     <Filter Include="Src\Load">
       <UniqueIdentifier>{9194730c-1b8c-48ce-b8bd-a03cdf748601}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Record\Scene">
+      <UniqueIdentifier>{6fa2c79c-62ab-41a3-a8cb-b88afc0d7ad8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -378,6 +381,12 @@
     <ClCompile Include="Src\Load\TestLoadScene.cpp">
       <Filter>Src\Load</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Record\Scene\LoadRecordScene.cpp">
+      <Filter>Src\Record\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Record\Scene\SaveRecordScene.cpp">
+      <Filter>Src\Record\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -409,6 +418,12 @@
     </ClInclude>
     <ClInclude Include="Src\Load\TestLoadScene.hpp">
       <Filter>Src\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Record\Scene\LoadRecordScene.hpp">
+      <Filter>Src\Record\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Record\Scene\SaveRecordScene.hpp">
+      <Filter>Src\Record\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

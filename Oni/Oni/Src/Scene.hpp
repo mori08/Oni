@@ -7,9 +7,12 @@
 // シーンの名前
 enum class SceneName
 {
-	TITLE,    // タイトル
+	TITLE,       // タイトル
 
-	TEST_LOAD // ロードのテスト
+	TEST_LOAD,   // ロードのテスト
+
+	LOAD_RECORD, // レコードのロード
+	SAVE_RECORD  // レコードのセーブ
 };
 
 

@@ -45,7 +45,7 @@ namespace Oni
 		ButtonManager::instance().setOnClick
 		(
 			NEWGAME_BUTTON.getName(),
-			[this]() { changeScene(SceneName::TEST_LOAD); }
+			[this]() { changeScene(SceneName::SAVE_RECORD); }
 		);
 
 		// 選択中のボタンの設定
@@ -65,8 +65,6 @@ namespace Oni
 
 		// ボタンの更新
 		ButtonManager::instance().update();
-
-		changeScene(SceneName::TEST_LOAD);
 	}
 
 
