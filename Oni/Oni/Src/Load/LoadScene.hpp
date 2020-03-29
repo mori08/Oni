@@ -7,6 +7,7 @@
 
 namespace Oni
 {
+	using LoadFunction = std::function<SceneName()>;
 	using ErrorMessage = Optional<String>;
 
 
@@ -24,7 +25,7 @@ namespace Oni
 
 	public:
 
-		LoadScene(const InitData& init);
+		LoadScene(const InitData& init, LoadFunction loadFunc);
 
 		virtual ~LoadScene();
 
@@ -38,17 +39,6 @@ namespace Oni
 		void drawFadeIn(double) const override;
 
 		void drawFadeOut(double) const override;
-
-	protected:
-
-		/// <summary>
-		/// mLoadThreadで動かす関数
-		/// </summary>
-		/// <remarks>
-		/// ロード中はゲームを終了させることができなくなるので
-		/// 現実的な時間で終わる処理を書く.
-		/// </remarks>
-		virtual SceneName load() = 0;
 
 	};
 

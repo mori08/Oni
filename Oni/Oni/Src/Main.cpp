@@ -2,6 +2,7 @@
 
 // シーン
 #include"Title/TitleScene.hpp"
+#include"Load/TestLoadScene.hpp"
 
 
 void Main()
@@ -20,7 +21,8 @@ void Main()
 
 	// シーンの管理
 	MyApp sceneManager;
-	sceneManager.add<Oni::TitleScene>(SceneName::TITLE);
+	sceneManager.add<Oni::TitleScene>   (SceneName::TITLE);
+	sceneManager.add<Oni::TestLoadScene>(SceneName::TEST_LOAD);
 
 	while (System::Update())
 	{

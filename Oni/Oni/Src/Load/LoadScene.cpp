@@ -8,57 +8,59 @@ namespace
 }
 
 
-Oni::LoadScene::LoadScene(const InitData& init)
-	: IScene(init)
+namespace Oni
 {
-	mLoadThread = std::async
-	(
-		std::launch::async,
-		[this]()
-		{
-			return load();
-		}
-	);
-}
 
-
-Oni::LoadScene::~LoadScene()
-{
-	mLoadThread.get();
-}
-
-
-void Oni::LoadScene::update()
-{
-	// スレッドの状況を取得
-	auto status = mLoadThread.wait_for(std::chrono::microseconds(0));
-
-	// スレッドが終了していたらシーン遷移
-	if (status == std::future_status::ready)
+	LoadScene::LoadScene(const InitData& init, LoadFunction loadFunc)
+		: IScene(init)
 	{
-		auto sceneName = mLoadThread.get();
+		mLoadThread = std::async
+		(
+			std::launch::async,
+			loadFunc
+		);
+	}
 
-		if (!changeScene(sceneName))
+
+	LoadScene::~LoadScene()
+	{
+
+	}
+
+
+	void LoadScene::update()
+	{
+		// スレッドの状況を取得
+		auto status = mLoadThread.wait_for(std::chrono::microseconds(0));
+
+		// スレッドが終了していたらシーン遷移
+		if (status != std::future_status::timeout)
 		{
-			changeScene(SceneName::TITLE);
+			auto sceneName = mLoadThread.get();
+
+			if (!changeScene(sceneName))
+			{
+				changeScene(SceneName::TITLE);
+			}
 		}
 	}
-}
 
 
-void Oni::LoadScene::draw() const
-{
-	FontAsset(U"20")(U"Loading").draw(TEXT_POS);
-}
+	void LoadScene::draw() const
+	{
+		FontAsset(U"20")(U"Loading").draw(TEXT_POS);
+	}
 
 
-void Oni::LoadScene::drawFadeIn(double) const
-{
-	draw();
-}
+	void LoadScene::drawFadeIn(double) const
+	{
+		draw();
+	}
 
 
-void Oni::LoadScene::drawFadeOut(double) const
-{
-	draw();
+	void LoadScene::drawFadeOut(double) const
+	{
+		draw();
+	}
+
 }

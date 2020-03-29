@@ -41,6 +41,13 @@ namespace Oni
 		// ボタンの位置関係の設定
 		ButtonManager::instance().setVerticalAdjacentButton(NEWGAME_BUTTON.getName(), CONTINUE_BUTTON.getName());
 
+		// ボタンを押したときの処理の設定
+		ButtonManager::instance().setOnClick
+		(
+			NEWGAME_BUTTON.getName(),
+			[this]() { changeScene(SceneName::TEST_LOAD); }
+		);
+
 		// 選択中のボタンの設定
 		ButtonManager::instance().setSelectedButton(CONTINUE_BUTTON.getName());
 	}
@@ -58,6 +65,8 @@ namespace Oni
 
 		// ボタンの更新
 		ButtonManager::instance().update();
+
+		changeScene(SceneName::TEST_LOAD);
 	}
 
 

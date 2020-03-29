@@ -375,6 +375,9 @@
     <ClCompile Include="Src\Load\LoadScene.cpp">
       <Filter>Src\Load</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Load\TestLoadScene.cpp">
+      <Filter>Src\Load</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -402,6 +405,9 @@
       <Filter>Src\Record</Filter>
     </ClInclude>
     <ClInclude Include="Src\Load\LoadScene.hpp">
+      <Filter>Src\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Load\TestLoadScene.hpp">
       <Filter>Src\Load</Filter>
     </ClInclude>
   </ItemGroup>
