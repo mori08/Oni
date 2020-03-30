@@ -45,7 +45,7 @@ namespace Oni
 		ButtonManager::instance().setOnClick
 		(
 			NEWGAME_BUTTON.getName(),
-			[this]() { changeScene(SceneName::SAVE_RECORD); }
+			[this]() { changeScene(SceneName::LOAD_GAME); }
 		);
 
 		// ‘I‘ğ’†‚Ìƒ{ƒ^ƒ“‚Ìİ’è

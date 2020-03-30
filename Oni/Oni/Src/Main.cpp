@@ -6,6 +6,8 @@
 #include"Load/TestLoadScene.hpp"
 #include"Record/Scene/LoadRecordScene.hpp"
 #include"Record/Scene/SaveRecordScene.hpp"
+#include"Game/Scene/LoadGameScene.hpp"
+#include"Game/Scene/GameScene.hpp"
 
 
 namespace
@@ -40,6 +42,8 @@ void Main()
 	sceneManager.add<Oni::TestLoadScene>  (SceneName::TEST_LOAD);
 	sceneManager.add<Oni::LoadRecordScene>(SceneName::LOAD_RECORD);
 	sceneManager.add<Oni::SaveRecordScene>(SceneName::SAVE_RECORD);
+	sceneManager.add<Oni::LoadGameScene>  (SceneName::LOAD_GAME);
+	sceneManager.add<Oni::GameScene>      (SceneName::GAME);
 
 	while (System::Update())
 	{

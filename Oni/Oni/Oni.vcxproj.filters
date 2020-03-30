@@ -399,6 +399,9 @@
     <ClCompile Include="Src\Game\Scene\LoadGameScene.cpp">
       <Filter>Src\Game\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Scene\GameScene.cpp">
+      <Filter>Src\Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -441,6 +444,9 @@
       <Filter>Src\Game</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Scene\LoadGameScene.hpp">
+      <Filter>Src\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Scene\GameScene.hpp">
       <Filter>Src\Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>

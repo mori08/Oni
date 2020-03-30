@@ -21,7 +21,9 @@ namespace Oni
 	{
 	public:
 
-		static constexpr int32 SQUARE_SIZE = 40; // 1マスの1辺の長さ(ピクセル)
+		static constexpr int32 SQUARE_X = 40; // 1マスのX辺の長さ(ピクセル)
+		static constexpr int32 SQUARE_Y = 30; // 1マスのY辺の長さ(ピクセル)
+		static constexpr int32 SQUARE_Z = 20; // 1マスのZ辺の長さ(ピクセル)
 
 	private:
 
@@ -65,6 +67,8 @@ namespace Oni
 		/// 描画
 		/// </summary>
 		void draw() const;
+
+	private:
 
 		/// <summary>
 		/// 地形の描画

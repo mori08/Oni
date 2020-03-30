@@ -11,7 +11,7 @@ namespace Oni
 			init,
 			[]()
 			{
-				GameManager::instance().load();
+				if (GameManager::instance().load()) { return SceneName::GAME; }
 				return SceneName::TITLE;
 			}
 		)

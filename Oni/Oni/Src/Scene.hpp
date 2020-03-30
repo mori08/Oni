@@ -12,7 +12,10 @@ enum class SceneName
 	TEST_LOAD,   // ロードのテスト
 
 	LOAD_RECORD, // レコードのロード
-	SAVE_RECORD  // レコードのセーブ
+	SAVE_RECORD, // レコードのセーブ
+
+	LOAD_GAME,   // ゲームのロード
+	GAME
 };
 
 
