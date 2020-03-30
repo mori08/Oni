@@ -101,6 +101,9 @@
     <Filter Include="Src\Game">
       <UniqueIdentifier>{ae6f2812-30e1-4824-bf09-078dd193f5e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Game\Scene">
+      <UniqueIdentifier>{19d3e5a5-8120-4d75-8836-5a9e605295ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -393,6 +396,9 @@
     <ClCompile Include="Src\Game\GameManager.cpp">
       <Filter>Src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Scene\LoadGameScene.cpp">
+      <Filter>Src\Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -433,6 +439,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\GameManager.hpp">
       <Filter>Src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Scene\LoadGameScene.hpp">
+      <Filter>Src\Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
