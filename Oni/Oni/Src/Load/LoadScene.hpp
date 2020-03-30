@@ -8,7 +8,6 @@
 namespace Oni
 {
 	using LoadFunction = std::function<SceneName()>;
-	using ErrorMessage = Optional<String>;
 
 
 	/// <summary>
