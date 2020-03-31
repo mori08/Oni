@@ -110,6 +110,9 @@
     <Filter Include="Src\Game\Collider">
       <UniqueIdentifier>{9f4400e9-d74a-4ec5-931c-e1ee772373a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Game\ObjectType">
+      <UniqueIdentifier>{5dd6fe93-f537-4c68-8fea-bacab465424f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -408,6 +411,9 @@
     <ClCompile Include="Src\Game\Scene\GameScene.cpp">
       <Filter>Src\Game\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp">
+      <Filter>Src\Game\ObjectType</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -457,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\Collider\Collider.hpp">
       <Filter>Src\Game\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp">
+      <Filter>Src\Game\ObjectType</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
