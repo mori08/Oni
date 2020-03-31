@@ -104,6 +104,12 @@
     <Filter Include="Src\Game\Scene">
       <UniqueIdentifier>{19d3e5a5-8120-4d75-8836-5a9e605295ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Game\Object">
+      <UniqueIdentifier>{34648afc-2dc6-4301-b594-42e2cf4198f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Game\Collider">
+      <UniqueIdentifier>{9f4400e9-d74a-4ec5-931c-e1ee772373a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -448,6 +454,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\Scene\GameScene.hpp">
       <Filter>Src\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Collider\Collider.hpp">
+      <Filter>Src\Game\Collider</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -244,6 +244,7 @@
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp" />
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
+    <ClInclude Include="Src\Game\Collider\Collider.hpp" />
     <ClInclude Include="Src\Game\GameManager.hpp" />
     <ClInclude Include="Src\Game\Scene\GameScene.hpp" />
     <ClInclude Include="Src\Game\Scene\LoadGameScene.hpp" />
