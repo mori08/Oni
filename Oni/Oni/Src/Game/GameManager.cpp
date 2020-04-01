@@ -101,8 +101,54 @@ namespace Oni
 	}
 
 
+	Vec2 GameManager::drawPos(const Vec3& pos)
+	{
+		return DRAW_BASE_POS + Vec2(pos.x, pos.y - pos.z);
+	}
+
+
+	double GameManager::getTerrainHeight(const Vec2& pixel) const
+	{
+		const Point square = Floor(pixel / Vec2(SQUARE_X, SQUARE_Y)).asPoint();
+
+		if (square.x < 0 || square.x >= mStageSize.x) { return Inf<double>; }
+		if (square.y < 0 || square.y >= mStageSize.y) { return Inf<double>; }
+
+		const double slopeRate = (pixel.x - SQUARE_X * square.x) / SQUARE_X;
+
+		return SQUARE_Z *
+			(
+				mHeight[square.x][square.y]
+				+ mSlope[square.x][square.y] * slopeRate
+			);
+	}
+
+
+	double GameManager::getTerrainHeight(const std::pair<double, double>& x, double y) const
+	{
+		double maxHeight = Max(
+			getTerrainHeight(Vec2(x.first , y)),
+			getTerrainHeight(Vec2(x.second, y))
+		);
+
+		double border = Floor(x.first / SQUARE_X) * SQUARE_X + SQUARE_X;
+
+		for (; border < x.second; border += SQUARE_X)
+		{
+			maxHeight = Max(maxHeight, getTerrainHeight(Vec2(border - 1, y)));
+			maxHeight = Max(maxHeight, getTerrainHeight(Vec2(border + 1, y)));
+		}
+
+		return maxHeight;
+	}
+
+
 	void GameManager::drawTerrain() const
 	{
+#ifdef _DEBUG
+
+		static Vec2 checkPos = Vec2::Zero();
+
 		for (int32 y : Range(0, mStageSize.y - 1))
 		{
 			for (int32 x : Range(0, mStageSize.x - 1))
@@ -119,6 +165,8 @@ namespace Oni
 					.drawFrame(2, MyWhite);
 			}
 		}
+
+#endif // _DEBUG
 	}
 
 }

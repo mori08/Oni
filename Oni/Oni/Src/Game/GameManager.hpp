@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <Siv3D.hpp>
+#include "Collider/Collider.hpp"
 
 
 /*
@@ -67,6 +67,38 @@ namespace Oni
 		/// 描画
 		/// </summary>
 		void draw() const;
+
+		/// <summary>
+		/// 描画座標の取得
+		/// </summary>
+		/// <param name="pos"> 座標 </param>
+		/// <returns> 描画座標 </returns>
+		static Vec2 drawPos(const Vec3& pos);
+
+		/// <summary>
+		/// 地形の高さを取得
+		/// </summary>
+		/// <param name="pixel"> XY座標(ピクセル) </param>
+		/// <returns> 地形の高さ </returns>
+		double getTerrainHeight(const Vec2& pixel) const;
+
+		/// <summary>
+		/// 地形の高さを取得
+		/// </summary>
+		/// <param name="x"> X座標の範囲 </param>
+		/// <param name="y"> Y座標       </param>
+		/// <returns> 地形の高さ </returns>
+		double getTerrainHeight(const std::pair<double, double>& x , double y) const;
+
+		/// <summary>
+		/// 地形の高さを取得
+		/// </summary>
+		/// <param name="collider"> 直方体 </param>
+		/// <returns> 地形の高さ </returns>
+		double getTerrainHeight(const Collider& collider) const
+		{
+			return getTerrainHeight({ collider.minPos().x,collider.maxPos().x }, collider.getCenterPos().y);
+		}
 
 	private:
 
