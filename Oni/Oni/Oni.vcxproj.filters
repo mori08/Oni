@@ -414,6 +414,9 @@
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp">
       <Filter>Src\Game\ObjectType</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Object\GameObject.cpp">
+      <Filter>Src\Game\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -466,6 +469,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp">
       <Filter>Src\Game\ObjectType</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Object\GameObject.hpp">
+      <Filter>Src\Game\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

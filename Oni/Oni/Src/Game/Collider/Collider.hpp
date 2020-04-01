@@ -62,9 +62,18 @@ namespace Oni
 		/// À•W‚ÌˆÚ“®
 		/// </summary>
 		/// <param name="movement"> ˆÚ“®—Ê </param>
-		void movePos(const Vec3& movement)
+		void moveBy(const Vec3& movement)
 		{
 			mPos += movement;
+		}
+
+		/// <summary>
+		/// À•W‚ÌˆÚ“®
+		/// </summary>
+		/// <param name="movement"> ˆÚ“®—Ê </param>
+		constexpr Collider movedBy(const Vec3& movement) const
+		{
+			return std::move(Collider(mPos + movement, mSize));
 		}
 
 		/// <summary>

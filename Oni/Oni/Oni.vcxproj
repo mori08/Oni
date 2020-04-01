@@ -230,6 +230,7 @@
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Game\GameManager.cpp" />
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp" />
+    <ClCompile Include="Src\Game\Object\GameObject.cpp" />
     <ClCompile Include="Src\Game\Scene\GameScene.cpp" />
     <ClCompile Include="Src\Game\Scene\LoadGameScene.cpp" />
     <ClCompile Include="Src\Load\LoadScene.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="Src\Game\Collider\Collider.hpp" />
     <ClInclude Include="Src\Game\GameManager.hpp" />
     <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp" />
+    <ClInclude Include="Src\Game\Object\GameObject.hpp" />
     <ClInclude Include="Src\Game\Scene\GameScene.hpp" />
     <ClInclude Include="Src\Game\Scene\LoadGameScene.hpp" />
     <ClInclude Include="Src\Load\LoadScene.hpp" />
