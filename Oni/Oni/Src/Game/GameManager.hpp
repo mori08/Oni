@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Collider/Collider.hpp"
+#include "Object/GameObject.hpp"
 
 
 /*
@@ -36,6 +36,9 @@ namespace Oni
 		// 地形の傾斜
 		Array<Array<int32>> mSlope;
 
+		// オブジェクトのリスト
+		Array<GameObjectPtr> mObjectList;
+
 	private:
 
 		GameManager();
@@ -62,6 +65,11 @@ namespace Oni
 		/// </summary>
 		/// <returns> 正しく読み込めたとき true , そうでないとき false </returns>
 		bool load();
+
+		/// <summary>
+		/// 更新
+		/// </summary>
+		void update();
 
 		/// <summary>
 		/// 描画
@@ -97,7 +105,7 @@ namespace Oni
 		/// <returns> 地形の高さ </returns>
 		double getTerrainHeight(const Collider& collider) const
 		{
-			return getTerrainHeight({ collider.minPos().x,collider.maxPos().x }, collider.getCenterPos().y);
+			return getTerrainHeight({ collider.minPos().x,collider.maxPos().x }, collider.centerPos().y);
 		}
 
 	private:

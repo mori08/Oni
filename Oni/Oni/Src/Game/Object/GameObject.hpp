@@ -37,11 +37,7 @@ namespace Oni
 		/// <param name="pos" > 生成座標 </param>
 		/// <param name="size"> サイズ   </param>
 		/// <param name="type"> 種類     </param>
-		GameObject(const Vec3& pos, const Vec3 size, const ObjectType& type)
-			: mCollider(pos, size)
-			, mType(type)
-		{
-		}
+		GameObject(const Vec3& pos, const Vec3 size, const ObjectType& type);
 
 		/// <summary>
 		/// 更新
@@ -61,4 +57,7 @@ namespace Oni
 		void moveObject();
 
 	};
+
+	using GameObjectPtr = std::shared_ptr<GameObject>;
+
 }

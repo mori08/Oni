@@ -2,6 +2,8 @@
 #include "../MyLibrary.hpp"
 #include "../MyColor.hpp"
 
+#include "Object/Test/TestGameObject.hpp"
+
 
 namespace
 {
@@ -12,6 +14,7 @@ namespace
 
 namespace Oni
 {
+
 	GameManager::GameManager()
 	{
 	}
@@ -91,13 +94,29 @@ namespace Oni
 			++readingRow;
 		}
 
+		mObjectList.emplace_back(std::make_shared<TestGameObject>());
+
 		return true;
+	}
+
+
+	void GameManager::update()
+	{
+		for (auto& object : mObjectList)
+		{
+			object->update();
+		}
 	}
 
 
 	void GameManager::draw() const
 	{
 		drawTerrain();
+
+		for (const auto& object : mObjectList)
+		{
+			object->draw();
+		}
 	}
 
 

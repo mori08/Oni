@@ -53,7 +53,7 @@ namespace Oni
 		/// <summary>
 		/// ’†SÀ•W‚Ìæ“¾
 		/// </summary>
-		constexpr Vec3 getCenterPos() const
+		constexpr Vec3 centerPos() const
 		{
 			return mPos;
 		}

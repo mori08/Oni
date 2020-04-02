@@ -10,9 +10,12 @@ namespace Oni
 	{
 	}
 
+
 	void GameScene::update()
 	{
+		GameManager::instance().update();
 	}
+
 
 	void GameScene::draw() const
 	{

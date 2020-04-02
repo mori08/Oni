@@ -5,10 +5,43 @@
 namespace Oni
 {
 
+	GameObject::GameObject(const Vec3& pos, const Vec3 size, const ObjectType& type)
+		: mCollider(pos, size)
+		, mType(type)
+		, mVelocity(0,0,0)
+		, mAcceleration(0,0,0)
+	{
+		mIsOnGround = false;
+		if (mCollider.minPos().z < GameManager::instance().getTerrainHeight(mCollider))
+		{
+			mIsOnGround = true;
+			mCollider.moveBy(Vec3(0, 0, GameManager::instance().getTerrainHeight(mCollider) - mCollider.minPos().z));
+		}
+	}
+
+
 	void GameObject::moveObject()
 	{
 		mVelocity += Scene::DeltaTime() * mAcceleration;
 		Vec3 deltaVelocity = Scene::DeltaTime() * mVelocity;
+
+		// ZŽ²•ûŒü‚Ì“®‚«
+		if (mIsOnGround)
+		{
+			mVelocity.z = 0;
+		}
+		else
+		{
+			mCollider.moveBy(Vec3(0, 0, deltaVelocity.z));
+			const double terrainHeight = GameManager::instance().getTerrainHeight(mCollider);
+
+			if (mCollider.minPos().z < terrainHeight) // ’n–Ê‚É—Ž‚¿‚½‚Æ‚«
+			{
+				mIsOnGround = true;
+				mCollider.moveBy(Vec3(0, 0, terrainHeight - mCollider.minPos().z));
+				mVelocity.z = 0;
+			}
+		}
 
 		// XŽ²•ûŒü‚Ì“®‚«
 		if (mIsOnGround) // ’n–Ê‚ÉÚ‚µ‚Ä‚¢‚é‚Æ‚« //
@@ -77,19 +110,6 @@ namespace Oni
 			else
 			{
 				mCollider.moveBy(Vec3(0, deltaVelocity.y, 0));
-			}
-		}
-
-		// ZŽ²•ûŒü‚Ì“®‚«
-		if (!mIsOnGround)
-		{
-			mCollider.moveBy(Vec3(0, 0, deltaVelocity.z));
-			const double terrainHeight = GameManager::instance().getTerrainHeight(mCollider);
-
-			if (mCollider.minPos().z < terrainHeight) // ’n–Ê‚É—Ž‚¿‚½‚Æ‚«
-			{
-				mIsOnGround = true;
-				mCollider.moveBy(Vec3(0, 0, terrainHeight - mCollider.minPos().z));
 			}
 		}
 	}
