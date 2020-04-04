@@ -28,7 +28,7 @@ namespace Oni
 		bool spanIsFinished = mChangeSpan.update();
 
 		// ‰æ‘œ‚ªƒ‹[ƒv‚·‚é‚Æ‚«
-		if (mAnimationMap[mAnimationName].IS_LOOP)
+		if (mAnimationMap.find(mAnimationName)->second.IS_LOOP)
 		{
 			if (spanIsFinished)
 			{
@@ -54,7 +54,12 @@ namespace Oni
 		}
 
 		mAnimationName = name;
-		mChangeSpan = Linearly<double>(mAnimationMap[name].TIME, (double)mAnimationMap[name].POS_LIST.size());
+		mChangeSpan 
+			= Linearly<double>
+				(
+					mAnimationMap.find(name)->second.TIME, 
+					(double)mAnimationMap.find(name)->second.POS_LIST.size()
+				);
 	}
 
 
