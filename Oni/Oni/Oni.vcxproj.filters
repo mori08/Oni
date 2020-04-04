@@ -429,6 +429,7 @@
     <ClCompile Include="Src\Game\Object\Test\TestGameObject.cpp">
       <Filter>Src\Game\Object\Test</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Slice\SliceTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -489,6 +490,9 @@
       <Filter>Src\Game\Object\Test</Filter>
     </ClInclude>
     <ClInclude Include="Src\Slice\Linearly.hpp">
+      <Filter>Src\Slice</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Slice\SliceTexture.hpp">
       <Filter>Src\Slice</Filter>
     </ClInclude>
   </ItemGroup>
