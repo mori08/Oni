@@ -228,6 +228,7 @@
   <ItemGroup>
     <ClCompile Include="Src\Button\Button.cpp" />
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
+    <ClCompile Include="Src\Game\Collider\Collider.cpp" />
     <ClCompile Include="Src\Game\GameManager.cpp" />
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp" />
     <ClCompile Include="Src\Game\Object\GameObject.cpp" />

@@ -12,10 +12,10 @@ namespace
 	// ‘¬‚³
 	constexpr double SPEED = 80;
 	// ‰Á‘¬“x
-	constexpr Vec3 ACCEL(0, 0, -160);
+	constexpr Vec3 ACCEL(0, 0, -250);
 
 	// ƒWƒƒƒ“ƒv‚Ì‘¬‚³
-	constexpr double JAMP_SPEED = 120;
+	constexpr double JAMP_SPEED = 200;
 }
 
 
@@ -25,7 +25,7 @@ namespace Oni
 	TestGameObject::TestGameObject()
 		: GameObject(INIT_POS, OBJECT_SIZE, ObjectType::PLAYER)
 	{
-		mAcceleration = ACCEL;
+		mCollider.setAcceleration(Collider::Z, ACCEL.z);
 	}
 
 
@@ -36,22 +36,15 @@ namespace Oni
 		direction.y += KeyDown .pressed() - KeyUp  .pressed();
 		direction = direction.isZero() ? direction : (SPEED * direction.normalized());
 
-		mVelocity.x = direction.x;
-		mVelocity.y = direction.y;
+		mCollider.setVelocity(Collider::X, direction.x);
+		mCollider.setVelocity(Collider::Y, direction.y);
 
-		if (mIsOnGround&&KeyC.down())
+		if (mCollider.isOnGround()&&KeyC.down())
 		{
-			mIsOnGround = false;
-			mVelocity.z = JAMP_SPEED;
+			mCollider.setVelocity(Collider::Z, JAMP_SPEED);
 		}
 
-		ClearPrint();
-		if (mVelocity.z > 0)
-		{
-			Print << U"Jamp";
-		}
-
-		moveObject();
+		mCollider.update();
 	}
 
 

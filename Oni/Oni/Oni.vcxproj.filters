@@ -429,7 +429,12 @@
     <ClCompile Include="Src\Game\Object\Test\TestGameObject.cpp">
       <Filter>Src\Game\Object\Test</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Slice\SliceTexture.cpp" />
+    <ClCompile Include="Src\Slice\SliceTexture.cpp">
+      <Filter>Src\Slice</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Collider\Collider.cpp">
+      <Filter>Src\Game\Collider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">

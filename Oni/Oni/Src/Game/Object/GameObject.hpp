@@ -14,15 +14,6 @@ namespace Oni
 	{
 	protected:
 
-		// 地面に接しているとき true , そうでないとき false
-		bool mIsOnGround;
-
-		// 速度
-		Vec3 mVelocity;
-
-		// 加速度
-		Vec3 mAcceleration;
-
 		// 交差判定用の直方体
 		Collider mCollider;
 
@@ -48,13 +39,6 @@ namespace Oni
 		/// 描画
 		/// </summary>
 		virtual void draw() const = 0;
-
-	protected:
-
-		/// <summary>
-		/// 地形情報を参考にしたオブジェクトの移動
-		/// </summary>
-		void moveObject();
 
 	};
 
