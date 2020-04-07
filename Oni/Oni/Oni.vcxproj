@@ -230,6 +230,7 @@
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Game\Collider\Collider.cpp" />
     <ClCompile Include="Src\Game\GameManager.cpp" />
+    <ClCompile Include="Src\Game\ObjectData\Battle\ObjectBattleData.cpp" />
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp" />
     <ClCompile Include="Src\Game\Object\GameObject.cpp" />
     <ClCompile Include="Src\Game\Object\Test\TestGameObject.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
     <ClInclude Include="Src\Game\Collider\Collider.hpp" />
     <ClInclude Include="Src\Game\GameManager.hpp" />
+    <ClInclude Include="Src\Game\ObjectData\Battle\ObjectBattleData.hpp" />
     <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp" />
     <ClInclude Include="Src\Game\Object\GameObject.hpp" />
     <ClInclude Include="Src\Game\Object\Test\TestGameObject.hpp" />

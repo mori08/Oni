@@ -122,6 +122,12 @@
     <Filter Include="Src\Slice">
       <UniqueIdentifier>{275befa2-59e3-4b91-8a8f-5870144004a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Game\ObjectData">
+      <UniqueIdentifier>{7b934e01-a344-466d-a38b-9e7415fa76b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Game\ObjectData\Battle">
+      <UniqueIdentifier>{b794c830-5a83-4a63-969b-bac10ae42375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -435,6 +441,9 @@
     <ClCompile Include="Src\Game\Collider\Collider.cpp">
       <Filter>Src\Game\Collider</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\ObjectData\Battle\ObjectBattleData.cpp">
+      <Filter>Src\Game\ObjectData\Battle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -499,6 +508,9 @@
     </ClInclude>
     <ClInclude Include="Src\Slice\SliceTexture.hpp">
       <Filter>Src\Slice</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\ObjectData\Battle\ObjectBattleData.hpp">
+      <Filter>Src\Game\ObjectData\Battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
