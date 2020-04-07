@@ -444,6 +444,9 @@
     <ClCompile Include="Src\Game\ObjectData\Battle\ObjectBattleData.cpp">
       <Filter>Src\Game\ObjectData\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Slice\Animation.cpp">
+      <Filter>Src\Slice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -511,6 +514,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\ObjectData\Battle\ObjectBattleData.hpp">
       <Filter>Src\Game\ObjectData\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Slice\Animation.hpp">
+      <Filter>Src\Slice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

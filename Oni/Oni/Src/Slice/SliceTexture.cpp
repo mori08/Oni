@@ -5,14 +5,14 @@
 namespace Oni
 {
 
-	SliceTexture::SliceTexture(const String& textureName, const Size& sliceSize, const Point& pos)
+	SliceTexture::SliceTexture(const String& textureName, const Size& sliceSize)
 		: mTextureName(textureName)
 		, mSliceSize(sliceSize)
 		, mMirror(false)
 		, mChangeSpan(0, 0)
 		, mAnimationName(U"Default")
 	{
-		setAnimation(mAnimationName, Animation(0, Array<Point>{pos}, false));
+		setAnimation(mAnimationName, Animation(PosOrder{ {0,Point::Zero()} }, false));
 	}
 
 
@@ -23,12 +23,12 @@ namespace Oni
 	}
 
 
-	bool SliceTexture::changeTexture()
+	bool SliceTexture::update()
 	{
 		bool spanIsFinished = mChangeSpan.update();
 
 		// ‰æ‘œ‚ªƒ‹[ƒv‚·‚é‚Æ‚«
-		if (mAnimationMap.find(mAnimationName)->second.IS_LOOP)
+		if (mAnimationMap.find(mAnimationName)->second.loop())
 		{
 			if (spanIsFinished)
 			{
@@ -54,12 +54,11 @@ namespace Oni
 		}
 
 		mAnimationName = name;
-		mChangeSpan 
-			= Linearly<double>
-				(
-					mAnimationMap.find(name)->second.TIME, 
-					(double)mAnimationMap.find(name)->second.POS_LIST.size()
-				);
+		mChangeSpan = Linearly<double>
+			(
+				mAnimationMap.find(name)->second.getTotalSecond(),
+				mAnimationMap.find(name)->second.getTotalSecond()
+			);
 	}
 
 
@@ -72,9 +71,7 @@ namespace Oni
 
 	TextureRegion SliceTexture::getTexture() const
 	{
-		const auto& POS_LIST = mAnimationMap.find(mAnimationName)->second.POS_LIST;
-
-		Point texturePos = POS_LIST[Min(POS_LIST.size() - 1, (size_t)mChangeSpan.getValue())];
+		const Point texturePos = mAnimationMap.find(mAnimationName)->second.getTexture(mChangeSpan.getValue());
 
 		auto texture = TextureAsset(mTextureName)(texturePos * mSliceSize, mSliceSize);
 

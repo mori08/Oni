@@ -2,41 +2,11 @@
 
 
 #include "Linearly.hpp"
+#include "Animation.hpp"
 
 
 namespace Oni
 {
-	/// <summary>
-	/// 画像の切り替え準とそれにかかる時間をまとめたもの
-	/// </summary>
-	class Animation
-	{
-	public:
-
-		// 画像切り替えにかかる時間
-		const double TIME;
-
-		// 画像の切り替え順
-		const Array<Point> POS_LIST;
-
-		// ループするか
-		const bool IS_LOOP;
-
-		/// <summary>
-		/// 画像の切り替え順とそれにかかる時間など
-		/// </summary>
-		/// <param name="time"   > 画像切り替えにかける時間 </param>
-		/// <param name="posList"> 画像の切り替え順         </param>
-		/// <param name="posList"> ループ                   </param>
-		Animation(double time, const Array<Point>& posList, bool isLoop)
-			: TIME(time)
-			, POS_LIST(posList)
-			, IS_LOOP(isLoop)
-		{
-		}
-
-	};
-
 
 	/// <summary>
 	/// 1枚の画像を複数の画像に分け,
@@ -72,7 +42,7 @@ namespace Oni
 		/// <param name="textureName"> 画像の名前             </param>
 		/// <param name="sliceSize">   画像を切り分ける大きさ </param>
 		/// <param name="pos">         画像の初期番号         </param>
-		SliceTexture(const String& textureName, const Size& sliceSize, const Point& pos);
+		SliceTexture(const String& textureName, const Size& sliceSize);
 
 		/// <summary>
 		/// 画像の名前の設定
@@ -97,7 +67,7 @@ namespace Oni
 		/// 画像の切り替えが終了したとき true , そうでないとき false
 		/// ループしているときは true を常に返すので注意
 		/// </returns>
-		bool changeTexture();
+		bool update();
 
 		/// <summary>
 		/// 画像の反転
