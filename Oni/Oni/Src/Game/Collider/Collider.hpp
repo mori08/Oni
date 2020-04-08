@@ -104,6 +104,14 @@ namespace Oni
 		}
 
 		/// <summary>
+		/// サイズの取得
+		/// </summary>
+		const Vec3& size() const
+		{
+			return mSize;
+		}
+
+		/// <summary>
 		/// 座標の設定
 		/// </summary>
 		void setPos(const Vec3& pos)

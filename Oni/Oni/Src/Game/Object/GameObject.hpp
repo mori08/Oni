@@ -3,6 +3,8 @@
 
 #include "../Collider/Collider.hpp"
 #include "../ObjectType/ObjectType.hpp"
+#include "../ObjectData/Battle/ObjectBattleData.hpp"
+#include "../../Slice/SliceTexture.hpp"
 
 
 namespace Oni
@@ -20,25 +22,38 @@ namespace Oni
 		// オブジェクトの種類
 		ObjectType mType;
 
+		// バトル用のデータ
+		Optional<ObjectBattleData> mBattleData;
+
+		// 画像とアニメーション
+		SliceTexture mSlide;
+
 	public:
 
 		/// <summary>
 		/// オブジェクト
 		/// </summary>
-		/// <param name="pos" > 生成座標 </param>
-		/// <param name="size"> サイズ   </param>
-		/// <param name="type"> 種類     </param>
-		GameObject(const Vec3& pos, const Vec3 size, const ObjectType& type);
+		/// <param name="collider"> 当たり判定 </param>
+		/// <param name="type"    > 種類       </param>
+		/// <param name="slide"   > 画像       </param>
+		GameObject(const Collider& collider, const ObjectType& type, const SliceTexture& slide);
 
 		/// <summary>
-		/// 更新
+		/// バトル時の更新
 		/// </summary>
-		virtual void update() = 0;
+		virtual void updateBattle() = 0;
 
 		/// <summary>
 		/// 描画
 		/// </summary>
 		virtual void draw() const = 0;
+
+	protected:
+
+		/// <summary>
+		/// ColliderとSliceTextureから画像を描画する座標を決定
+		/// </summary>
+		Point getDrawTexturePoint() const;
 
 	};
 

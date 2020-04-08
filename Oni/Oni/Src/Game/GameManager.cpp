@@ -2,7 +2,7 @@
 #include "../MyLibrary.hpp"
 #include "../MyColor.hpp"
 
-#include "Object/Test/TestGameObject.hpp"
+#include "Object/Player/PlayerObject.hpp"
 
 
 namespace
@@ -94,7 +94,7 @@ namespace Oni
 			++readingRow;
 		}
 
-		mObjectList.emplace_back(std::make_shared<TestGameObject>());
+		mObjectList.emplace_back(std::make_shared<PlayerObject>(Vec3(100, 100, 100)));
 
 		return true;
 	}
@@ -104,7 +104,7 @@ namespace Oni
 	{
 		for (auto& object : mObjectList)
 		{
-			object->update();
+			object->updateBattle();
 		}
 	}
 

@@ -94,6 +94,14 @@ namespace Oni
 		/// </summary>
 		TextureRegion getTexture() const;
 
+		/// <summary>
+		/// ‰æ‘œ‚ğØ‚è•ª‚¯‚é‘å‚«‚³‚Ìæ“¾
+		/// </summary>
+		const Size& getSliceSize() const
+		{
+			return mSliceSize;
+		}
+
 	};
 	
 }

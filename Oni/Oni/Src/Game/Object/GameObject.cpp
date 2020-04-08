@@ -5,11 +5,23 @@
 namespace Oni
 {
 
-	GameObject::GameObject(const Vec3& pos, const Vec3 size, const ObjectType& type)
-		: mCollider(pos, size)
+	GameObject::GameObject(const Collider& collider, const ObjectType& type, const SliceTexture& slide)
+		: mCollider(collider)
 		, mType(type)
+		, mSlide(slide)
 	{
 
+	}
+
+
+	Point GameObject::getDrawTexturePoint() const
+	{
+		Vec2 rtn = GameManager::instance().drawPos(mCollider.centerPos());
+		
+		rtn.x +=                        - mSlide.getSliceSize().x / 2;
+		rtn.y += mCollider.size().z / 2 - mSlide.getSliceSize().y;
+		
+		return rtn.asPoint();
 	}
 
 }

@@ -28,7 +28,7 @@ namespace Oni
 
 		// “ñ•ª’Tõ‚Å‰æ‘œ‚ğ‘I‘ğ
 		size_t l = 0, g = mPosOrder.size() - 1;
-		while (g - l <= 1)
+		while (g - l > 1)
 		{
 			size_t mid = (l + g) / 2;
 			if (mPosOrder[mid].first < animSecond)

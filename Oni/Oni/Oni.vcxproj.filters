@@ -113,9 +113,6 @@
     <Filter Include="Src\Game\ObjectType">
       <UniqueIdentifier>{5dd6fe93-f537-4c68-8fea-bacab465424f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Game\Object\Test">
-      <UniqueIdentifier>{baf56082-7e20-46b9-be69-387a62f8a404}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Game\Object\Player">
       <UniqueIdentifier>{cea1c6fa-7e66-4a46-ac1c-209d36e41c6f}</UniqueIdentifier>
     </Filter>
@@ -432,9 +429,6 @@
     <ClCompile Include="Src\Game\Object\GameObject.cpp">
       <Filter>Src\Game\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Object\Test\TestGameObject.cpp">
-      <Filter>Src\Game\Object\Test</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Slice\SliceTexture.cpp">
       <Filter>Src\Slice</Filter>
     </ClCompile>
@@ -446,6 +440,9 @@
     </ClCompile>
     <ClCompile Include="Src\Slice\Animation.cpp">
       <Filter>Src\Slice</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Object\Player\PlayerObject.cpp">
+      <Filter>Src\Game\Object\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -503,9 +500,6 @@
     <ClInclude Include="Src\Game\Object\GameObject.hpp">
       <Filter>Src\Game\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Object\Test\TestGameObject.hpp">
-      <Filter>Src\Game\Object\Test</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Slice\Linearly.hpp">
       <Filter>Src\Slice</Filter>
     </ClInclude>
@@ -517,6 +511,9 @@
     </ClInclude>
     <ClInclude Include="Src\Slice\Animation.hpp">
       <Filter>Src\Slice</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Object\Player\PlayerObject.hpp">
+      <Filter>Src\Game\Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
