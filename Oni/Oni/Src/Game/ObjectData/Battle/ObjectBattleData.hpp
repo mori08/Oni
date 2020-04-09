@@ -1,7 +1,8 @@
 #pragma once
 
 
-#include <Siv3D.hpp>
+#include "../../Collider/Collider.hpp"
+#include "../../ObjectType/ObjectType.hpp"
 
 
 namespace Oni
@@ -11,6 +12,28 @@ namespace Oni
 	/// </summary>
 	class ObjectBattleData
 	{
+	private:
+
+		/// <summary>
+		/// オブジェクト判定確認用
+		/// </summary>
+		class CheckInfo
+		{
+		public:
+
+			CheckInfo(const Collider& c, const ObjectType& t, double v)
+				: collider(c)
+				, type(t)
+				, value(v)
+			{
+			}
+
+			const Collider   collider; // コライダー
+			const ObjectType type;     // 種類
+			const double     value;    // ダメージ量などの値
+
+		};
+
 	private:
 
 		// 体力
@@ -30,6 +53,9 @@ namespace Oni
 		
 		// アクションのマップ
 		std::map<String, std::function<void(double)>> mActionMap;
+
+		// オブジェクト判定のリスト
+		Array<CheckInfo> mCheckInfoList;
 
 	public:
 
@@ -97,6 +123,26 @@ namespace Oni
 		/// </summary>
 		/// <param name="name"> アクションの名前 </param>
 		void changeAction(const String& name);
+
+		/// <summary>
+		/// 判定の追加
+		/// </summary>
+		/// <param name="collider"> コライダー     </param>
+		/// <param name="type"    > 種類           </param>
+		/// <param name="value"   > ダメージ量など </param>
+		void addCheckInfo(const Collider collider, const ObjectType type, double value = 0)
+		{
+			mCheckInfoList.emplace_back(collider, type, value);
+		}
+
+		/// <summary>
+		/// 判定のリストの取得
+		/// </summary>
+		/// <returns> 判定のリスト </returns>
+		const Array<CheckInfo>& getCheckInfoList() const
+		{
+			return mCheckInfoList;
+		}
 
 	};
 }

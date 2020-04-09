@@ -18,6 +18,8 @@ namespace Oni
 
 	void ObjectBattleData::update()
 	{
+		mCheckInfoList.clear();
+
 		mActionSecond     += Scene::DeltaTime();
 		mInvincibleSecond -= Scene::DeltaTime();
 
