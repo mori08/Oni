@@ -4,7 +4,7 @@
 namespace
 {
 	// オブジェクトのサイズ
-	constexpr Vec3 COLLIDER_SIZE(25, 60, 20);
+	constexpr Vec3 COLLIDER_SIZE(25, 50, 20);
 
 	// 画像のサイズ
 	constexpr Size TEXTURE_SIZE(60, 60);
@@ -45,7 +45,12 @@ namespace Oni
 {
 
 	PlayerObject::PlayerObject(const Vec3& pos)
-		: GameObject(Collider(pos, COLLIDER_SIZE), ObjectType::PLAYER, SliceTexture(U"Player", TEXTURE_SIZE))
+		: GameObject
+		(
+			Collider(pos, COLLIDER_SIZE), 
+			ObjectType::PLAYER, 
+			SliceTexture(U"Player", TEXTURE_SIZE)
+		)
 	{
 		mBattleData = ObjectBattleData(INIT_HP);
 		mBattleData->setAction(U"Control", [this](double) { control(); });

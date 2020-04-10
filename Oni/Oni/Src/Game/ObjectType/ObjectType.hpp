@@ -20,6 +20,8 @@ namespace Oni
 
 		static const ObjectType PLAYER; // ƒvƒŒƒCƒ„[
 
+		static const ObjectType ENEMY;  // “G
+
 	private:
 
 		/// <summary>

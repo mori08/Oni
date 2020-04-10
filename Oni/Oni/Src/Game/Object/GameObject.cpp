@@ -14,6 +14,25 @@ namespace Oni
 	}
 
 
+	void GameObject::updateBattle()
+	{
+		mCollider.update();
+
+		if (mBattleData)
+		{
+			mBattleData->update();
+		}
+
+		mSlide.update();
+	}
+
+
+	void GameObject::draw() const
+	{
+		mSlide.getTexture().draw(getDrawTexturePoint());
+	}
+
+
 	Point GameObject::getDrawTexturePoint() const
 	{
 		Vec2 rtn = GameManager::instance().drawPos(mCollider.centerPos());

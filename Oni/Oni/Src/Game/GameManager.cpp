@@ -3,6 +3,7 @@
 #include "../MyColor.hpp"
 
 #include "Object/Player/PlayerObject.hpp"
+#include "Object/GhostGirl/GhostGirlObject.hpp"
 
 
 namespace
@@ -95,6 +96,7 @@ namespace Oni
 		}
 
 		mObjectList.emplace_back(std::make_shared<PlayerObject>(Vec3(100, 100, 100)));
+		mObjectList.emplace_back(std::make_shared<GhostGirlObject>(Vec3(100, 100, 100)));
 
 		return true;
 	}
@@ -106,6 +108,8 @@ namespace Oni
 		{
 			object->updateBattle();
 		}
+
+		std::sort(mObjectList.begin(), mObjectList.end(), [](auto a, auto b) {return *a < *b; });
 	}
 
 

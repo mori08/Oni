@@ -39,14 +39,24 @@ namespace Oni
 		GameObject(const Collider& collider, const ObjectType& type, const SliceTexture& slide);
 
 		/// <summary>
+		/// y座標の比較
+		/// </summary>
+		bool operator<(const GameObject& another)const
+		{
+			return mCollider.centerPos().y < another.mCollider.centerPos().y;
+		}
+
+	public:
+
+		/// <summary>
 		/// バトル時の更新
 		/// </summary>
-		virtual void updateBattle() = 0;
+		virtual void updateBattle();
 
 		/// <summary>
 		/// 描画
 		/// </summary>
-		virtual void draw() const = 0;
+		virtual void draw() const;
 
 	protected:
 

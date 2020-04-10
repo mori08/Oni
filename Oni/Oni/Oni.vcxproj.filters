@@ -125,6 +125,9 @@
     <Filter Include="Src\Game\ObjectData\Battle">
       <UniqueIdentifier>{b794c830-5a83-4a63-969b-bac10ae42375}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Game\Object\GhostGirl">
+      <UniqueIdentifier>{ce8731b1-d86d-4cf9-9cd9-af38c92c9b23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -444,6 +447,9 @@
     <ClCompile Include="Src\Game\Object\Player\PlayerObject.cpp">
       <Filter>Src\Game\Object\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Object\GhostGirl\GhostGirlObject.cpp">
+      <Filter>Src\Game\Object\GhostGirl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -514,6 +520,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\Object\Player\PlayerObject.hpp">
       <Filter>Src\Game\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Object\GhostGirl\GhostGirlObject.hpp">
+      <Filter>Src\Game\Object\GhostGirl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
