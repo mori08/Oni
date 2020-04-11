@@ -2,6 +2,7 @@
 
 
 #include "Object/GameObject.hpp"
+#include "State/GameState.hpp"
 
 
 /*
@@ -26,6 +27,9 @@ namespace Oni
 		static constexpr int32 SQUARE_Z = 20; // 1マスのZ辺の長さ(ピクセル)
 
 	private:
+
+		// 状態(バトル・イベント・アドベンチャー)
+		GameStatePtr mState;
 
 		// ステージの広さ(マス座標)
 		Size mStageSize;
@@ -108,7 +112,14 @@ namespace Oni
 			return getTerrainHeight({ collider.minPos().x,collider.maxPos().x }, collider.centerPos().y);
 		}
 
-	private:
+		/// <summary>
+		/// オブジェクトのリストの取得
+		/// </summary>
+		/// <returns> オブジェクトのリスト </returns>
+		Array<GameObjectPtr>& getObjectList()
+		{
+			return mObjectList;
+		}
 
 		/// <summary>
 		/// 地形の描画

@@ -2,6 +2,10 @@
 #include "../MyLibrary.hpp"
 #include "../MyColor.hpp"
 
+// 状態
+#include "State/Battle/GameBattleState.hpp"
+
+// オブジェクト
 #include "Object/Player/PlayerObject.hpp"
 #include "Object/GhostGirl/GhostGirlObject.hpp"
 
@@ -18,6 +22,7 @@ namespace Oni
 
 	GameManager::GameManager()
 	{
+		mState = std::make_unique<GameBattleState>();
 	}
 
 
@@ -104,36 +109,13 @@ namespace Oni
 
 	void GameManager::update()
 	{
-		// 各オブジェクトの更新
-		for (auto& object : mObjectList)
-		{
-			object->updateBattle();
-		}
-
-		// 判定の確認
-		for (auto objA = mObjectList.begin(); objA != mObjectList.end(); ++objA)
-		{
-			auto objB = objA;
-			while (++objB != mObjectList.end())
-			{
-				(*objA)->passAnother(**objB);
-				(*objB)->passAnother(**objA);
-			}
-		}
-
-		// y座標でソート
-		std::sort(mObjectList.begin(), mObjectList.end(), [](auto a, auto b) {return *a < *b; });
+		mState->update();
 	}
 
 
 	void GameManager::draw() const
 	{
-		drawTerrain();
-
-		for (const auto& object : mObjectList)
-		{
-			object->draw();
-		}
+		mState->draw();
 	}
 
 
