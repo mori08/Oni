@@ -27,6 +27,8 @@ namespace Oni
 
 		void draw() const override;
 
+		void checkAnother(const ObjectBattleData::CheckInfo& checkInfo) override;
+
 	public:
 
 		/// <summary>

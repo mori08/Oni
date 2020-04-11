@@ -80,6 +80,16 @@ namespace Oni
 	}
 
 
+	void PlayerObject::checkAnother(const ObjectBattleData::CheckInfo& checkInfo)
+	{
+		ClearPrint();
+		if (checkTypeAndCollision(checkInfo, ObjectType::ENEMY))
+		{
+			Print << U"0";
+		}
+	}
+
+
 	void PlayerObject::control()
 	{
 		// ˆÚ“®•ûŒü‚ÌŒˆ’è

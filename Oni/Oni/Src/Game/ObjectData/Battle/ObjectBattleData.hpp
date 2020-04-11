@@ -12,7 +12,7 @@ namespace Oni
 	/// </summary>
 	class ObjectBattleData
 	{
-	private:
+	public:
 
 		/// <summary>
 		/// オブジェクト判定確認用

@@ -104,11 +104,24 @@ namespace Oni
 
 	void GameManager::update()
 	{
+		// 各オブジェクトの更新
 		for (auto& object : mObjectList)
 		{
 			object->updateBattle();
 		}
 
+		// 判定の確認
+		for (auto objA = mObjectList.begin(); objA != mObjectList.end(); ++objA)
+		{
+			auto objB = objA;
+			while (++objB != mObjectList.end())
+			{
+				(*objA)->passAnother(**objB);
+				(*objB)->passAnother(**objA);
+			}
+		}
+
+		// y座標でソート
 		std::sort(mObjectList.begin(), mObjectList.end(), [](auto a, auto b) {return *a < *b; });
 	}
 

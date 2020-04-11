@@ -33,6 +33,25 @@ namespace Oni
 	}
 
 
+	void GameObject::passAnother(GameObject& another) const
+	{
+		if (!mBattleData) { return; }
+
+		another.checkAnother(ObjectBattleData::CheckInfo(mCollider, mType, 0));
+
+		for (const auto& checkInfo : mBattleData->getCheckInfoList())
+		{
+			another.checkAnother(checkInfo);
+		}
+	}
+
+
+	void GameObject::checkAnother(const ObjectBattleData::CheckInfo&)
+	{
+		
+	}
+
+
 	Point GameObject::getDrawTexturePoint() const
 	{
 		Vec2 rtn = GameManager::instance().drawPos(mCollider.centerPos());
@@ -41,6 +60,16 @@ namespace Oni
 		rtn.y += mCollider.size().z / 2 - mSlide.getSliceSize().y;
 		
 		return rtn.asPoint();
+	}
+
+
+	Optional<Vec3> GameObject::checkTypeAndGetPos(const ObjectType& checkType) const
+	{
+		if (mType & checkType)
+		{
+			return mCollider.centerPos();
+		}
+		return none;
 	}
 
 }

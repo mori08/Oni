@@ -58,12 +58,46 @@ namespace Oni
 		/// </summary>
 		virtual void draw() const;
 
+		/// <summary>
+		/// 他のオブジェクトへ判定の譲渡(バトルでの使用)
+		/// </summary>
+		/// <param name="another"> 他オブジェクト </param>
+		virtual void passAnother(GameObject& another) const;
+
 	protected:
+
+		/// <summary>
+		/// 他のオブジェクトの判定を受取(バトルでの使用)
+		/// </summary>
+		/// <param name="checkInfo">  </param>
+		virtual void checkAnother(const ObjectBattleData::CheckInfo& chekcInfo);
 
 		/// <summary>
 		/// ColliderとSliceTextureから画像を描画する座標を決定
 		/// </summary>
 		Point getDrawTexturePoint() const;
+
+		/// <summary>
+		/// オブジェクトの種類と衝突の判定
+		/// </summary>
+		/// <param name="checkInfo"> 判定確認用の情報 </param>
+		/// <param name="checkType"> 指定する種類     </param>
+		/// <returns>
+		/// 指定の種類のオブジェクトかつ衝突しているとき true , そうでないとき false
+		/// </returns>
+		bool checkTypeAndCollision(const ObjectBattleData::CheckInfo& checkInfo, const ObjectType& checkType) const
+		{
+			return (checkInfo.type & checkType) && mCollider.intersects(checkInfo.collider);
+		}
+
+		/// <summary>
+		/// 指定の種類のオブジェクトのとき座標の取得
+		/// </summary>
+		/// <param name="checkType"> 指定する種類 </param>
+		/// <returns>
+		/// 座標
+		/// </returns>
+		Optional<Vec3> checkTypeAndGetPos(const ObjectType& checkType) const;
 
 	};
 
