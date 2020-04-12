@@ -3,6 +3,7 @@
 
 #include "Object/GameObject.hpp"
 #include "State/GameState.hpp"
+#include "Support/Stage/StageSupport.hpp"
 
 
 /*
@@ -31,14 +32,8 @@ namespace Oni
 		// 状態(バトル・イベント・アドベンチャー)
 		GameStatePtr mState;
 
-		// ステージの広さ(マス座標)
-		Size mStageSize;
-
-		// 地形の高さ
-		Array<Array<int32>> mHeight;
-
-		// 地形の傾斜
-		Array<Array<int32>> mSlope;
+		// ステージ
+		StageSupport mStageSupport;
 
 		// オブジェクトのリスト
 		Array<GameObjectPtr> mObjectList;
@@ -88,28 +83,11 @@ namespace Oni
 		static Vec2 drawPos(const Vec3& pos);
 
 		/// <summary>
-		/// 地形の高さを取得
+		/// ステージの取得
 		/// </summary>
-		/// <param name="pixel"> XY座標(ピクセル) </param>
-		/// <returns> 地形の高さ </returns>
-		double getTerrainHeight(const Vec2& pixel) const;
-
-		/// <summary>
-		/// 地形の高さを取得
-		/// </summary>
-		/// <param name="x"> X座標の範囲 </param>
-		/// <param name="y"> Y座標       </param>
-		/// <returns> 地形の高さ </returns>
-		double getTerrainHeight(const std::pair<double, double>& x , double y) const;
-
-		/// <summary>
-		/// 地形の高さを取得
-		/// </summary>
-		/// <param name="collider"> 直方体 </param>
-		/// <returns> 地形の高さ </returns>
-		double getTerrainHeight(const Collider& collider) const
+		const StageSupport& getStage() const
 		{
-			return getTerrainHeight({ collider.minPos().x,collider.maxPos().x }, collider.centerPos().y);
+			return mStageSupport;
 		}
 
 		/// <summary>
@@ -120,11 +98,6 @@ namespace Oni
 		{
 			return mObjectList;
 		}
-
-		/// <summary>
-		/// 地形の描画
-		/// </summary>
-		void drawTerrain() const;
 
 	};
 

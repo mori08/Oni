@@ -12,10 +12,10 @@ namespace Oni
 		, mAcceleration(Vec3::Zero())
 	{
 		mIsOnGround = false;
-		if (minPos().z < GameManager::instance().getTerrainHeight(*this))
+		if (minPos().z < GameManager::instance().getStage().height(*this))
 		{
 			mIsOnGround = true;
-			mPos.z = GameManager::instance().getTerrainHeight(*this) + mSize.z / 2;
+			mPos.z = GameManager::instance().getStage().height(*this) + mSize.z / 2;
 		}
 	}
 
@@ -46,7 +46,7 @@ namespace Oni
 		{
 			// 空中
 			mPos.z += v.z;
-			const double terrainHeight = GameManager::instance().getTerrainHeight(*this);
+			const double terrainHeight = GameManager::instance().getStage().height(*this);
 
 			if (minPos().z < terrainHeight) // 地上に落ちたとき
 			{
@@ -63,7 +63,7 @@ namespace Oni
 		{
 			// 地上
 			const double terrainHeight // 移動先の地形の高さ
-				= GameManager::instance().getTerrainHeight(movedBy(Vec3(v.x, 0, 0)));
+				= GameManager::instance().getStage().height(movedBy(Vec3(v.x, 0, 0)));
 
 			if (terrainHeight - minPos().z > GameManager::SQUARE_Z - 1)
 			{
@@ -88,7 +88,7 @@ namespace Oni
 		{
 			// 空中
 			const double terrainHeight // 移動先の地形の高さ
-				= GameManager::instance().getTerrainHeight(movedBy(Vec3(v.x, 0, 0)));
+				= GameManager::instance().getStage().height(movedBy(Vec3(v.x, 0, 0)));
 
 			if (terrainHeight - minPos().z > 0)
 			{
@@ -110,7 +110,7 @@ namespace Oni
 		{
 			// 地上
 			const double terrainHeight // 移動先の地形の高さ
-				= GameManager::instance().getTerrainHeight(movedBy(Vec3(0, v.y, 0)));
+				= GameManager::instance().getStage().height(movedBy(Vec3(0, v.y, 0)));
 
 			if (terrainHeight - minPos().z > 1)
 			{
@@ -134,7 +134,7 @@ namespace Oni
 		{
 			// 空中
 			const double terrainHeight // 移動先の地形の高さ
-				= GameManager::instance().getTerrainHeight(movedBy(Vec3(0, v.y, 0)));
+				= GameManager::instance().getStage().height(movedBy(Vec3(0, v.y, 0)));
 
 			if (terrainHeight - minPos().z > 0)
 			{

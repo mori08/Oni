@@ -36,7 +36,7 @@ namespace Oni
 	void GameBattleState::draw() const
 	{
 		// 地形の描画
-		GameManager::instance().drawTerrain();
+		GameManager::instance().getStage().draw(GameManager::instance().drawPos(Vec3::Zero()));
 
 		// オブジェクトの更新
 		for (const auto& obj : GameManager::instance().getObjectList())
