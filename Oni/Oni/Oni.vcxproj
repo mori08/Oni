@@ -229,6 +229,7 @@
     <ClCompile Include="Src\Button\Button.cpp" />
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Game\Collider\Collider.cpp" />
+    <ClCompile Include="Src\Game\Event\GameEvent.cpp" />
     <ClCompile Include="Src\Game\GameManager.cpp" />
     <ClCompile Include="Src\Game\ObjectData\Battle\ObjectBattleData.cpp" />
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp" />
@@ -237,8 +238,8 @@
     <ClCompile Include="Src\Game\Object\Player\PlayerObject.cpp" />
     <ClCompile Include="Src\Game\Scene\GameScene.cpp" />
     <ClCompile Include="Src\Game\Scene\LoadGameScene.cpp" />
+    <ClCompile Include="Src\Game\Stage\StageSupport.cpp" />
     <ClCompile Include="Src\Game\State\Battle\GameBattleState.cpp" />
-    <ClCompile Include="Src\Game\Support\Stage\StageSupport.cpp" />
     <ClCompile Include="Src\Load\LoadScene.cpp" />
     <ClCompile Include="Src\Load\TestLoadScene.cpp" />
     <ClCompile Include="Src\Main.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="Src\Button\Button.hpp" />
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
     <ClInclude Include="Src\Game\Collider\Collider.hpp" />
+    <ClInclude Include="Src\Game\Event\GameEvent.hpp" />
     <ClInclude Include="Src\Game\GameManager.hpp" />
     <ClInclude Include="Src\Game\ObjectData\Battle\ObjectBattleData.hpp" />
     <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp" />
@@ -263,9 +265,9 @@
     <ClInclude Include="Src\Game\Object\Player\PlayerObject.hpp" />
     <ClInclude Include="Src\Game\Scene\GameScene.hpp" />
     <ClInclude Include="Src\Game\Scene\LoadGameScene.hpp" />
+    <ClInclude Include="Src\Game\Stage\StageSupport.hpp" />
     <ClInclude Include="Src\Game\State\Battle\GameBattleState.hpp" />
     <ClInclude Include="Src\Game\State\GameState.hpp" />
-    <ClInclude Include="Src\Game\Support\Stage\StageSupport.hpp" />
     <ClInclude Include="Src\Load\LoadScene.hpp" />
     <ClInclude Include="Src\Load\TestLoadScene.hpp" />
     <ClInclude Include="Src\MyColor.hpp" />

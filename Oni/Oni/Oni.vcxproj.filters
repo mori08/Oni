@@ -134,11 +134,11 @@
     <Filter Include="Src\Game\State\Battle">
       <UniqueIdentifier>{d5aa70e4-c077-4224-9101-d02cc62312dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Game\Support">
-      <UniqueIdentifier>{16547917-0cfe-4d44-8c7a-907c90168608}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Game\Support\Stage">
+    <Filter Include="Src\Game\Stage">
       <UniqueIdentifier>{455f76fd-46ce-4f20-a942-c66aed35f800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Game\Event">
+      <UniqueIdentifier>{a30675e4-3791-455e-85a8-db615b96898d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -465,8 +465,11 @@
     <ClCompile Include="Src\Game\State\Battle\GameBattleState.cpp">
       <Filter>Src\Game\State\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Support\Stage\StageSupport.cpp">
-      <Filter>Src\Game\Support\Stage</Filter>
+    <ClCompile Include="Src\Game\Stage\StageSupport.cpp">
+      <Filter>Src\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Event\GameEvent.cpp">
+      <Filter>Src\Game\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -548,8 +551,11 @@
     <ClInclude Include="Src\Game\State\Battle\GameBattleState.hpp">
       <Filter>Src\Game\State\Battle</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Support\Stage\StageSupport.hpp">
-      <Filter>Src\Game\Support\Stage</Filter>
+    <ClInclude Include="Src\Game\Stage\StageSupport.hpp">
+      <Filter>Src\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Event\GameEvent.hpp">
+      <Filter>Src\Game\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

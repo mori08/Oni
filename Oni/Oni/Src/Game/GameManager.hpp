@@ -3,7 +3,7 @@
 
 #include "Object/GameObject.hpp"
 #include "State/GameState.hpp"
-#include "Support/Stage/StageSupport.hpp"
+#include "Stage/StageSupport.hpp"
 
 
 /*
