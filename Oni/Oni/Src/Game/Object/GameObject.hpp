@@ -4,6 +4,7 @@
 #include "../Collider/Collider.hpp"
 #include "../ObjectType/ObjectType.hpp"
 #include "../ObjectData/Battle/ObjectBattleData.hpp"
+#include "../ObjectData/Event/ObjectEventData.hpp"
 #include "../../Slice/SliceTexture.hpp"
 
 
@@ -25,8 +26,14 @@ namespace Oni
 		// バトル用のデータ
 		Optional<ObjectBattleData> mBattleData;
 
+		// イベント用のデータ
+		Optional<ObjectEventData> mEventData;
+
 		// 画像とアニメーション
 		SliceTexture mSlide;
+
+		// true のとき非表示
+		bool mIsHiding;
 
 	public:
 

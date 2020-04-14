@@ -9,6 +9,7 @@ namespace Oni
 		: mCollider(collider)
 		, mType(type)
 		, mSlide(slide)
+		, mIsHiding(true)
 	{
 
 	}
@@ -29,13 +30,15 @@ namespace Oni
 
 	void GameObject::draw() const
 	{
+		if (!mIsHiding) { return; }
+
 		mSlide.getTexture().draw(getDrawTexturePoint());
 	}
 
 
 	void GameObject::passAnother(GameObject& another) const
 	{
-		if (!mBattleData) { return; }
+		if (!mBattleData || !mIsHiding) { return; }
 
 		another.checkAnother(ObjectBattleData::CheckInfo(mCollider, mType, 0));
 

@@ -232,6 +232,7 @@
     <ClCompile Include="Src\Game\Event\GameEvent.cpp" />
     <ClCompile Include="Src\Game\GameManager.cpp" />
     <ClCompile Include="Src\Game\ObjectData\Battle\ObjectBattleData.cpp" />
+    <ClCompile Include="Src\Game\ObjectData\Event\ObjectEventData.cpp" />
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp" />
     <ClCompile Include="Src\Game\Object\GameObject.cpp" />
     <ClCompile Include="Src\Game\Object\GhostGirl\GhostGirlObject.cpp" />
@@ -259,6 +260,7 @@
     <ClInclude Include="Src\Game\Event\GameEvent.hpp" />
     <ClInclude Include="Src\Game\GameManager.hpp" />
     <ClInclude Include="Src\Game\ObjectData\Battle\ObjectBattleData.hpp" />
+    <ClInclude Include="Src\Game\ObjectData\Event\ObjectEventData.hpp" />
     <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp" />
     <ClInclude Include="Src\Game\Object\GameObject.hpp" />
     <ClInclude Include="Src\Game\Object\GhostGirl\GhostGirlObject.hpp" />
