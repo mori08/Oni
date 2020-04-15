@@ -20,6 +20,7 @@ namespace Oni
 	GhostGirlObject::GhostGirlObject(const Vec3& pos)
 		: GameObject
 		(
+			U"GhostGirl",
 			Collider(pos, COLLIDER_SIZE), 
 			ObjectType::ENEMY, 
 			SliceTexture(U"GhostGirl", TEXTURE_SIZE)

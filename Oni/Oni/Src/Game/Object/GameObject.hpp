@@ -17,6 +17,9 @@ namespace Oni
 	{
 	protected:
 
+		// 名前
+		const String mName;
+
 		// 交差判定用の直方体
 		Collider mCollider;
 
@@ -40,10 +43,11 @@ namespace Oni
 		/// <summary>
 		/// オブジェクト
 		/// </summary>
+		/// <param name="name"    > 名前       </param>
 		/// <param name="collider"> 当たり判定 </param>
 		/// <param name="type"    > 種類       </param>
 		/// <param name="slide"   > 画像       </param>
-		GameObject(const Collider& collider, const ObjectType& type, const SliceTexture& slide);
+		GameObject(const String& name, const Collider& collider, const ObjectType& type, const SliceTexture& slide);
 
 		/// <summary>
 		/// y座標の比較

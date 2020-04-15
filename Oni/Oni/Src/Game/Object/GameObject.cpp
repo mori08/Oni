@@ -5,8 +5,9 @@
 namespace Oni
 {
 
-	GameObject::GameObject(const Collider& collider, const ObjectType& type, const SliceTexture& slide)
-		: mCollider(collider)
+	GameObject::GameObject(const String& name, const Collider& collider, const ObjectType& type, const SliceTexture& slide)
+		: mName(name)
+		, mCollider(collider)
 		, mType(type)
 		, mSlide(slide)
 		, mIsHiding(true)

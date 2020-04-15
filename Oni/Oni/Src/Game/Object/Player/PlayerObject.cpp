@@ -47,6 +47,7 @@ namespace Oni
 	PlayerObject::PlayerObject(const Vec3& pos)
 		: GameObject
 		(
+			U"Player",
 			Collider(pos, COLLIDER_SIZE), 
 			ObjectType::PLAYER, 
 			SliceTexture(U"Player", TEXTURE_SIZE)
