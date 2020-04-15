@@ -26,7 +26,7 @@ namespace Oni
 		bool mMirror;
 
 		// ‰æ‘œ‚ğ‘JˆÚ‚·‚éŠÔ
-		Linearly<double> mChangeSpan;
+		double mChangeSpan;
 
 		// Œ»İ‚ÌAnimation‚Ì–¼‘O
 		String mAnimationName;

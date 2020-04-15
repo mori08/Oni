@@ -21,7 +21,8 @@ namespace Oni
 		// 他オブジェクトの判定
 		for (auto objA = GameManager::instance().getObjectList().begin(); objA != GameManager::instance().getObjectList().end(); ++objA)
 		{
-			for (auto objB = objA; objB != GameManager::instance().getObjectList().end(); ++objB)
+			auto objB = objA;
+			while (++objB != GameManager::instance().getObjectList().end())
 			{
 				(*objA)->passAnother(**objB);
 				(*objB)->passAnother(**objA);
@@ -29,7 +30,7 @@ namespace Oni
 		}
 
 		// y座標でソート
-		std::sort(GameManager::instance().getObjectList().begin(), GameManager::instance().getObjectList().end(), [](auto a, auto b) {return *a < *b; });
+		GameManager::instance().getObjectList().sort([](GameObjectPtr& a, GameObjectPtr& b) { return *a < *b; });
 	}
 
 

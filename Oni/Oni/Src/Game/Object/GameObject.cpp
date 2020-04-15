@@ -1,5 +1,6 @@
 #include "GameObject.hpp"
 #include "../GameManager.hpp"
+#include "../../MyColor.hpp"
 
 
 namespace Oni
@@ -34,6 +35,18 @@ namespace Oni
 		if (!mIsHiding) { return; }
 
 		mSlide.getTexture().draw(getDrawTexturePoint());
+	}
+
+
+	void GameObject::drawCollider() const
+	{
+		const Vec3 m = mCollider.minPos();
+		const Vec3 M = mCollider.maxPos();
+		const Vec3 s = mCollider.size();
+
+		RectF(GameManager::instance().drawPos(Vec3(m.x, m.y, M.z)), s.x, s.y).drawFrame(1, Palette::Red);
+		RectF(GameManager::instance().drawPos(Vec3(m.x, M.y, M.z)), s.x, s.z).drawFrame(1, Palette::Red);
+		RectF(GameManager::instance().drawPos(Vec3(m.x, m.y, m.z)), s.x, s.y).drawFrame(1, Palette::Red);
 	}
 
 

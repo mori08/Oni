@@ -36,7 +36,10 @@ namespace Oni
 		StageSupport mStageSupport;
 
 		// オブジェクトのリスト
-		Array<GameObjectPtr> mObjectList;
+		std::list<GameObjectPtr> mObjectList;
+
+		// オブジェクトとその名前の連想配列
+		std::map<String, GameObjectPtr> mObjectNameMap;
 
 	private:
 
@@ -94,10 +97,14 @@ namespace Oni
 		/// オブジェクトのリストの取得
 		/// </summary>
 		/// <returns> オブジェクトのリスト </returns>
-		Array<GameObjectPtr>& getObjectList()
+		std::list<GameObjectPtr>& getObjectList()
 		{
 			return mObjectList;
 		}
+
+		/// <summary>
+		/// オブジェクトの取得
+		/// </summary>
 
 	};
 

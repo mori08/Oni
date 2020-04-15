@@ -70,10 +70,23 @@ namespace Oni
 		virtual void draw() const;
 
 		/// <summary>
+		/// コライダーの描画
+		/// </summary>
+		void drawCollider() const;
+
+		/// <summary>
 		/// 他のオブジェクトへ判定の譲渡(バトルでの使用)
 		/// </summary>
 		/// <param name="another"> 他オブジェクト </param>
 		virtual void passAnother(GameObject& another) const;
+
+		/// <summary>
+		/// 名前の取得
+		/// </summary>
+		const String& getName() const
+		{
+			return mName;
+		}
 
 	protected:
 

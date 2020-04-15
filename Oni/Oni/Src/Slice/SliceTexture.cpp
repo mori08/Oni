@@ -9,7 +9,7 @@ namespace Oni
 		: mTextureName(textureName)
 		, mSliceSize(sliceSize)
 		, mMirror(false)
-		, mChangeSpan(0, 0)
+		, mChangeSpan(0)
 		, mAnimationName(U"Default")
 	{
 		setAnimation(mAnimationName, Animation(PosOrder{ {0,Point::Zero()} }, false));
@@ -25,14 +25,15 @@ namespace Oni
 
 	bool SliceTexture::update()
 	{
-		bool spanIsFinished = mChangeSpan.update();
+		mChangeSpan += Scene::DeltaTime();
+		bool spanIsFinished = mChangeSpan > mAnimationMap.find(mAnimationName)->second.getTotalSecond();
 
 		// ‰æ‘œ‚ªƒ‹[ƒv‚·‚é‚Æ‚«
 		if (mAnimationMap.find(mAnimationName)->second.loop())
 		{
 			if (spanIsFinished)
 			{
-				mChangeSpan.restart();
+				mChangeSpan = 0;
 			}
 
 			return true;
@@ -54,11 +55,7 @@ namespace Oni
 		}
 
 		mAnimationName = name;
-		mChangeSpan = Linearly<double>
-			(
-				mAnimationMap.find(name)->second.getTotalSecond(),
-				mAnimationMap.find(name)->second.getTotalSecond()
-			);
+		mChangeSpan = 0;
 	}
 
 
@@ -71,7 +68,7 @@ namespace Oni
 
 	TextureRegion SliceTexture::getTexture() const
 	{
-		const Point texturePos = mAnimationMap.find(mAnimationName)->second.getTexture(mChangeSpan.getValue());
+		const Point texturePos = mAnimationMap.find(mAnimationName)->second.getTexture(mChangeSpan);
 
 		auto texture = TextureAsset(mTextureName)(texturePos * mSliceSize, mSliceSize);
 

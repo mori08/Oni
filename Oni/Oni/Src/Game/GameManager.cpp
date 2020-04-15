@@ -100,8 +100,12 @@ namespace Oni
 			++readingRow;
 		}
 
-		mObjectList.emplace_back(std::make_shared<PlayerObject>(Vec3(100, 100, 100)));
-		mObjectList.emplace_back(std::make_shared<GhostGirlObject>(Vec3(100, 100, 100)));
+		mObjectList.emplace_back(std::make_shared<GhostGirlObject>(Vec3(100, 100, 0)));
+		mObjectList.emplace_back(std::make_shared<PlayerObject>(Vec3(100, 100, 0)));
+		for (const auto& object : mObjectList)
+		{
+			mObjectNameMap[object->getName()] = object;
+		}
 
 		return true;
 	}

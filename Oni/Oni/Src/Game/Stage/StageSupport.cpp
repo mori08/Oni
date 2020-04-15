@@ -1,5 +1,5 @@
 #include "StageSupport.hpp"
-#include "../../../MyColor.hpp"
+#include "../../MyColor.hpp"
 
 
 namespace Oni

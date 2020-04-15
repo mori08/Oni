@@ -4,7 +4,7 @@
 namespace
 {
 	// オブジェクトのサイズ
-	constexpr Vec3 COLLIDER_SIZE(25, 50, 20);
+	constexpr Vec3 COLLIDER_SIZE(25, 20, 50);
 
 	// 画像のサイズ
 	constexpr Size TEXTURE_SIZE(60, 60);

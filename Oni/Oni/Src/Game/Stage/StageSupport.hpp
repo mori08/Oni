@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../Collider/Collider.hpp"
+#include "../Collider/Collider.hpp"
 
 
 /*
