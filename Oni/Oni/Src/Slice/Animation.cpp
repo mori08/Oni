@@ -14,13 +14,13 @@ namespace Oni
 
 	Point Animation::getTexture(double animSecond) const
 	{
-		if (mPosOrder.begin()->first < animSecond)
+		if (animSecond < mPosOrder.begin()->first)
 		{
 			// Å‰‚Ì‰æ‘œ
 			return mPosOrder.begin()->second;
 		}
 
-		if (mPosOrder.rbegin()->first > animSecond)
+		if (animSecond > mPosOrder.rbegin()->first)
 		{
 			// ÅŒã‚Ì‰æ‘œ
 			return mPosOrder.rbegin()->second;
