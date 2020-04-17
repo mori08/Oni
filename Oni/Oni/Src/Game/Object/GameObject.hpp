@@ -70,6 +70,14 @@ namespace Oni
 		virtual void draw() const;
 
 		/// <summary>
+		/// コライダーの取得
+		/// </summary>
+		Collider& getCollider()
+		{
+			return mCollider;
+		}
+
+		/// <summary>
 		/// コライダーの描画
 		/// </summary>
 		void drawCollider() const;
@@ -86,6 +94,15 @@ namespace Oni
 		const String& getName() const
 		{
 			return mName;
+		}
+
+		/// <summary>
+		/// イベントデータの取得
+		/// </summary>
+		/// <returns> イベントデータ </returns>
+		Optional<ObjectEventData>& getEventData()
+		{
+			return mEventData;
 		}
 
 	protected:

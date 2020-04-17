@@ -1,4 +1,5 @@
 #include "GameEvent.hpp"
+#include "../GameManager.hpp"
 #include "../../MyLibrary.hpp"
 
 
@@ -13,7 +14,9 @@ namespace Oni
 	{
 		mData[mEventName] = Array<Array<String>>();
 
+		// 各イベントの登録
 		mEventFunc[U"Wait"] = [this]() { wait(); };
+		mEventFunc[U"Move"] = [this]() { moveObject(); };
 	}
 
 
@@ -63,7 +66,6 @@ namespace Oni
 		// 0列目に対応する処理があるか確認
 		if (!mEventFunc.count(mData[mEventName][mReadingRow][0]))
 		{
-			mError = true;
 			outputErrorMessage(U"update");
 			return;
 		}
@@ -80,12 +82,13 @@ namespace Oni
 	}
 
 
-	void GameEvent::outputErrorMessage(const String& funcName) const
+	void GameEvent::outputErrorMessage(const String& funcName)
 	{
 		printDebug(U"[GameEvent::U" + funcName + U"]");
 		printDebug(U"イベントファイルに誤りがあります.");
 		printDebug(U"イベント名 > " + mEventName);
 		printDebug(U"行 > " + ToString(mReadingRow));
+		mError = true;
 	}
 
 
@@ -96,9 +99,42 @@ namespace Oni
 			// 待ち時間の取得
 			mWaitSecond = Parse<double>(mData[mEventName][mReadingRow][1]);
 		}
-		catch (ParseError)
+		catch (ParseError&)
 		{
 			outputErrorMessage(U"wait");
+		}
+	}
+
+
+	void GameEvent::moveObject()
+	{
+		try
+		{
+			// オブジェクトの名前
+			const String objName    = mData[mEventName][mReadingRow][1];
+
+			// 移動時間
+			const double moveSecond = Parse<double>(mData[mEventName][mReadingRow][2]);
+
+			// 移動速度
+			const Vec3   velocity   = Parse<Vec3>(mData[mEventName][mReadingRow][3]);
+
+			auto objectPtr = GameManager::instance().getObject(objName);
+			if (objectPtr && objectPtr.value()->getEventData())
+			{
+				objectPtr.value()->getCollider().setVelocity(Collider::X, velocity.x);
+				objectPtr.value()->getCollider().setVelocity(Collider::Y, velocity.y);
+				objectPtr.value()->getCollider().setVelocity(Collider::Z, velocity.z);
+				objectPtr.value()->getEventData().value().setMoveSecond(moveSecond);
+			}
+			else
+			{
+				outputErrorMessage(U"moveObject");
+			}
+		}
+		catch (ParseError&)
+		{
+			outputErrorMessage(U"moveObject");
 		}
 	}
 

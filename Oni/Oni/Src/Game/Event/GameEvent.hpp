@@ -64,7 +64,7 @@ namespace Oni
 		/// エラーメッセージの出力
 		/// </summary>
 		/// <param name="funcName"> 処理名 </param>
-		void outputErrorMessage(const String& funcName)const;
+		void outputErrorMessage(const String& funcName);
 
 	private:
 
@@ -72,6 +72,11 @@ namespace Oni
 		/// 待ち
 		/// </summary>
 		void wait();
+
+		/// <summary>
+		/// オブジェクトの移動
+		/// </summary>
+		void moveObject();
 
 	};
 
