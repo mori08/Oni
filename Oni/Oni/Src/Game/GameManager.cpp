@@ -127,4 +127,11 @@ namespace Oni
 		return DRAW_BASE_POS + Vec2(pos.x, pos.y - pos.z);
 	}
 
+
+	Optional<GameObjectPtr> GameManager::getObject(const String& objName)
+	{
+		if (mObjectNameMap.count(objName)) { return mObjectNameMap[objName]; }
+		return none;
+	}
+
 }

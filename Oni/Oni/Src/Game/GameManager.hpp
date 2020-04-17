@@ -105,6 +105,9 @@ namespace Oni
 		/// <summary>
 		/// オブジェクトの取得
 		/// </summary>
+		/// <param name="objName"> オブジェクトの名前 </param>
+		/// <returns> オブジェクト </returns>
+		Optional<GameObjectPtr> getObject(const String& objName);
 
 	};
 
