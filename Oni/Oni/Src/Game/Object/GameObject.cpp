@@ -12,6 +12,8 @@ namespace Oni
 		, mType(type)
 		, mSlide(slide)
 		, mIsHiding(true)
+		, mBattleData(none)
+		, mEventData(none)
 	{
 
 	}
@@ -35,7 +37,7 @@ namespace Oni
 		if (mEventData)
 		{
 			mEventData->update();
-			if (mEventData->isMoving()) 
+			if (!mEventData->isMoving()) 
 			{
 				mCollider.setVelocity(Collider::X, 0);
 				mCollider.setVelocity(Collider::Y, 0);
@@ -43,7 +45,7 @@ namespace Oni
 			}
 			mCollider.update();
 		}
-
+		
 		mSlide.update();
 	}
 

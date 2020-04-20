@@ -57,6 +57,8 @@ namespace Oni
 		mBattleData->setAction(U"Control", [this](double) { control(); });
 		mBattleData->changeAction(U"Control");
 
+		mEventData = ObjectEventData(mSlide);
+
 		mCollider.setAcceleration(Collider::Z, -GRAVITY);
 
 		mSlide.setAnimation(U"Wait", WAIT_ANIM);

@@ -4,6 +4,7 @@
 
 // 状態
 #include "State/Battle/GameBattleState.hpp"
+#include "State/Event/GameEventState.hpp"
 
 // オブジェクト
 #include "Object/Player/PlayerObject.hpp"
@@ -28,7 +29,7 @@ namespace Oni
 
 	bool GameManager::load()
 	{
-		const FilePath filePath = U"Asset/Data/Game/TestStage.csv";
+		const FilePath filePath = U"Asset/Data/Stage/TestStage.csv";
 
 		// CSVファイルの確認
 		CSVData csv(filePath);
@@ -105,6 +106,7 @@ namespace Oni
 		{
 			mObjectNameMap[object->getName()] = object;
 		}
+		mState = std::make_unique<GameEventState>(U"TestEvent");
 
 		return true;
 	}

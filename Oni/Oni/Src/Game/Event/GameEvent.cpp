@@ -55,10 +55,13 @@ namespace Oni
 
 	void GameEvent::update()
 	{
+		// エラーでストップ
+		if (mError) { return; }
+
 		mWaitSecond -= Scene::DeltaTime();
 
 		// 待ち
-		if (mError && mWaitSecond > 0) { return; }
+		if (mWaitSecond > 0) { return; }
 
 		// 読み込める行がまだあるか確認
 		if (mReadingRow >= mData[mEventName].size()) { return; }
@@ -87,7 +90,7 @@ namespace Oni
 		printDebug(U"[GameEvent::U" + funcName + U"]");
 		printDebug(U"イベントファイルに誤りがあります.");
 		printDebug(U"イベント名 > " + mEventName);
-		printDebug(U"行 > " + ToString(mReadingRow));
+		printDebug(U"行 > " + ToString(mReadingRow+1));
 		mError = true;
 	}
 
@@ -96,12 +99,13 @@ namespace Oni
 	{
 		try
 		{
-			// 待ち時間の取得
+			// 待ち時間の取得 (1列目)
 			mWaitSecond = Parse<double>(mData[mEventName][mReadingRow][1]);
 		}
-		catch (ParseError&)
+		catch (ParseError& e)
 		{
 			outputErrorMessage(U"wait");
+			printDebug(e.what());
 		}
 	}
 
@@ -110,13 +114,13 @@ namespace Oni
 	{
 		try
 		{
-			// オブジェクトの名前
+			// オブジェクトの名前 (1列目)
 			const String objName    = mData[mEventName][mReadingRow][1];
 
-			// 移動時間
+			// 移動時間 (2列目)
 			const double moveSecond = Parse<double>(mData[mEventName][mReadingRow][2]);
 
-			// 移動速度
+			// 移動速度 (3列目)
 			const Vec3   velocity   = Parse<Vec3>(mData[mEventName][mReadingRow][3]);
 
 			auto objectPtr = GameManager::instance().getObject(objName);
@@ -130,11 +134,20 @@ namespace Oni
 			else
 			{
 				outputErrorMessage(U"moveObject");
+				if (!objectPtr)
+				{
+					printDebug(objName + U" がみつかりません");
+				}
+				else if (!objectPtr.value()->getEventData())
+				{
+					Print << U"EventDataが存在しないオブジェクトです";
+				}
 			}
 		}
-		catch (ParseError&)
+		catch (ParseError& e)
 		{
 			outputErrorMessage(U"moveObject");
+			printDebug(e.what());
 		}
 	}
 

@@ -9,6 +9,8 @@
 #include"Game/Scene/LoadGameScene.hpp"
 #include"Game/Scene/GameScene.hpp"
 
+#include "Game/GameManager.hpp"
+
 
 namespace
 {
@@ -44,6 +46,9 @@ void Main()
 	sceneManager.add<Oni::SaveRecordScene>(SceneName::SAVE_RECORD);
 	sceneManager.add<Oni::LoadGameScene>  (SceneName::LOAD_GAME);
 	sceneManager.add<Oni::GameScene>      (SceneName::GAME);
+
+	// Game‚Ì€”õ
+	Oni::GameManager::instance().getEvent().load(U"Asset/Data/Event/");
 
 	while (System::Update())
 	{

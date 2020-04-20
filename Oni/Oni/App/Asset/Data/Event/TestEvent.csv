@@ -1,0 +1,4 @@
+﻿Wait,0.5,,
+Move,Player,10,"(90,0,0)"
+Wait,15,,
+Move,Player,10,"(-90,0,0)"
