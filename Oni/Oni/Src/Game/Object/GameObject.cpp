@@ -30,6 +30,24 @@ namespace Oni
 	}
 
 
+	void GameObject::updateEvent()
+	{
+		if (mEventData)
+		{
+			mEventData->update();
+			if (mEventData->isMoving()) 
+			{
+				mCollider.setVelocity(Collider::X, 0);
+				mCollider.setVelocity(Collider::Y, 0);
+				mCollider.setVelocity(Collider::Z, 0);
+			}
+			mCollider.update();
+		}
+
+		mSlide.update();
+	}
+
+
 	void GameObject::draw() const
 	{
 		if (!mIsHiding) { return; }

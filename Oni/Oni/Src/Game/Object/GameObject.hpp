@@ -65,6 +65,11 @@ namespace Oni
 		virtual void updateBattle();
 
 		/// <summary>
+		/// イベント時の更新
+		/// </summary>
+		virtual void updateEvent();
+
+		/// <summary>
 		/// 描画
 		/// </summary>
 		virtual void draw() const;

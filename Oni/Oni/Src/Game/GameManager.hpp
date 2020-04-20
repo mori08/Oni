@@ -4,6 +4,7 @@
 #include "Object/GameObject.hpp"
 #include "State/GameState.hpp"
 #include "Stage/StageSupport.hpp"
+#include "Event/GameEvent.hpp"
 
 
 /*
@@ -34,6 +35,9 @@ namespace Oni
 
 		// ステージ
 		StageSupport mStageSupport;
+
+		// イベント
+		GameEvent mEvent;
 
 		// オブジェクトのリスト
 		std::list<GameObjectPtr> mObjectList;
@@ -91,6 +95,14 @@ namespace Oni
 		const StageSupport& getStage() const
 		{
 			return mStageSupport;
+		}
+
+		/// <summary>
+		/// イベントの取得
+		/// </summary>
+		GameEvent& getEvent()
+		{
+			return mEvent;
 		}
 
 		/// <summary>
