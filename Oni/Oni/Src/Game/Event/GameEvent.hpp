@@ -78,6 +78,11 @@ namespace Oni
 		/// </summary>
 		void moveObject();
 
+		/// <summary>
+		/// オブジェクトの演出
+		/// </summary>
+		void actObject();
+
 	};
 
 }

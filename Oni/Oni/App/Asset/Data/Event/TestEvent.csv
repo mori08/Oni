@@ -1,4 +1,5 @@
 ﻿Wait,0.5,,
-Move,Player,10,"(90,0,0)"
-Wait,15,,
-Move,Player,10,"(-90,0,0)"
+Move,Player,5,"(90,0,0)"
+Wait,8,,
+Act,Player,Mirror,
+Move,Player,5,"(-90,0,0)"

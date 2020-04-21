@@ -17,6 +17,7 @@ namespace Oni
 		// 各イベントの登録
 		mEventFunc[U"Wait"] = [this]() { wait(); };
 		mEventFunc[U"Move"] = [this]() { moveObject(); };
+		mEventFunc[U"Act"]  = [this]() { actObject(); };
 	}
 
 
@@ -136,11 +137,11 @@ namespace Oni
 				outputErrorMessage(U"moveObject");
 				if (!objectPtr)
 				{
-					printDebug(objName + U" がみつかりません");
+					printDebug(U"オブジェクト " + objName + U" がみつかりません");
 				}
 				else if (!objectPtr.value()->getEventData())
 				{
-					Print << U"EventDataが存在しないオブジェクトです";
+					printDebug(U"EventDataが存在しないオブジェクトです");
 				}
 			}
 		}
@@ -149,6 +150,39 @@ namespace Oni
 			outputErrorMessage(U"moveObject");
 			printDebug(e.what());
 		}
+	}
+
+	void GameEvent::actObject()
+	{
+		// オブジェクトの名前 (1列目)
+		const String objName = mData[mEventName][mReadingRow][1];
+
+		// 演出名 (2列目)
+		const String actName = mData[mEventName][mReadingRow][2];
+
+		auto objectPtr = GameManager::instance().getObject(objName);
+		if (!objectPtr)
+		{
+			outputErrorMessage(U"actObject"); 
+			printDebug(U"オブジェクト " + objName + U" がみつかりません"); 
+			return;
+		}
+
+		if (!objectPtr.value()->getEventData())
+		{
+			outputErrorMessage(U"actObject");
+			printDebug(U"EventDataが存在しないオブジェクトです");
+			return;
+		}
+
+		if (!objectPtr.value()->getEventData()->isExistAct(actName))
+		{
+			outputErrorMessage(U"actObject");
+			printDebug(U"オブジェクトの演出 " + actName + U" がみつかりません");
+			return;
+		}
+		
+		objectPtr.value()->getEventData()->act(actName);
 	}
 
 }
