@@ -228,6 +228,7 @@
   <ItemGroup>
     <ClCompile Include="Src\Button\Button.cpp" />
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
+    <ClCompile Include="Src\Game\Board\GameBoard.cpp" />
     <ClCompile Include="Src\Game\Collider\Collider.cpp" />
     <ClCompile Include="Src\Game\Event\GameEvent.cpp" />
     <ClCompile Include="Src\Game\GameManager.cpp" />
@@ -257,6 +258,7 @@
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp" />
     <ClInclude Include="Src\Button\ButtonManager.hpp" />
+    <ClInclude Include="Src\Game\Board\GameBoard.hpp" />
     <ClInclude Include="Src\Game\Collider\Collider.hpp" />
     <ClInclude Include="Src\Game\Event\GameEvent.hpp" />
     <ClInclude Include="Src\Game\GameManager.hpp" />
