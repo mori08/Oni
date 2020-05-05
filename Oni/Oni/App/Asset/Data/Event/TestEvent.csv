@@ -3,3 +3,5 @@ Move,Player,5,"(90,0,0)"
 Wait,8,,
 Act,Player,Mirror,
 Move,Player,5,"(-90,0,0)"
+Text,,話し手,マイクテスト\nマイクテスト\n本日は晴天なり
+Move,Player,5,"(90,0,0)"

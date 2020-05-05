@@ -18,8 +18,7 @@ namespace Oni
 		mEventFunc[U"Wait"] = [this]() { wait(); };
 		mEventFunc[U"Move"] = [this]() { moveObject(); };
 		mEventFunc[U"Act"]  = [this]() { actObject(); };
-
-		mTextBoard = std::make_unique<TextBoard>(U"", U"話し手", U"マイクテスト\nマイクテスト\n本日は晴天なり");
+		mEventFunc[U"Text"] = [this]() { setText(); };
 	}
 
 
@@ -195,6 +194,21 @@ namespace Oni
 		}
 		
 		objectPtr.value()->getEventData()->act(actName);
+	}
+
+
+	void GameEvent::setText()
+	{
+		// アイコンの画像名 (1列目)
+		const String iconName    = mData[mEventName][mReadingRow][1];
+
+		// 話し手の名前 (2列目)
+		const String speakerName = mData[mEventName][mReadingRow][2];
+
+		// テキスト (3列目)
+		const String text        = mData[mEventName][mReadingRow][3];
+
+		mTextBoard = std::make_unique<TextBoard>(iconName, speakerName, text);
 	}
 
 }

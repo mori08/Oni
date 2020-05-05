@@ -86,6 +86,11 @@ namespace Oni
 		/// </summary>
 		void actObject();
 
+		/// <summary>
+		/// テキストの表示
+		/// </summary>
+		void setText();
+
 	};
 
 }
