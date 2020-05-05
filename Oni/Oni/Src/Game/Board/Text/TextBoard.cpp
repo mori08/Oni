@@ -45,9 +45,18 @@ namespace Oni
 	}
 
 
-	void TextBoard::selectedUpdate()
+	bool TextBoard::selectedUpdate()
 	{
-		mDrawAbleLength.update();
+		const bool isEnd = mDrawAbleLength.update();
+
+		if (KeyZ.up())
+		{
+			if (isEnd) { return true; }
+
+			mDrawAbleLength.toEndPoint();
+		}
+
+		return false;
 	}
 
 

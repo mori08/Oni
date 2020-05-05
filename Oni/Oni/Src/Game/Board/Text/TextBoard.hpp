@@ -10,6 +10,9 @@ namespace Oni
 	/// <summary>
 	/// テキストを表示するウィンドウ
 	/// </summary>
+	/// <remarks>
+	/// ポリモーフィズムを使わずイベントでも使用
+	/// </remarks>
 	class TextBoard : public GameBoard
 	{
 	private:
@@ -40,7 +43,7 @@ namespace Oni
 
 		void update() override;
 
-		void selectedUpdate() override;
+		bool selectedUpdate() override;
 
 		void draw() const override;
 

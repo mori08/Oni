@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <Siv3D.hpp>
+#include "../Board/Text/TextBoard.hpp"
 
 
 namespace Oni
@@ -25,6 +25,9 @@ namespace Oni
 
 		// イベント用の処理
 		std::map<String, std::function<void()>> mEventFunc;
+
+		// テキストボックス
+		std::unique_ptr<TextBoard> mTextBoard;
 
 		// 待ち時間
 		double mWaitSecond;

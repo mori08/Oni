@@ -18,6 +18,8 @@ namespace Oni
 		mEventFunc[U"Wait"] = [this]() { wait(); };
 		mEventFunc[U"Move"] = [this]() { moveObject(); };
 		mEventFunc[U"Act"]  = [this]() { actObject(); };
+
+		mTextBoard = std::make_unique<TextBoard>(U"", U"話し手", U"マイクテスト\nマイクテスト\n本日は晴天なり");
 	}
 
 
@@ -59,10 +61,16 @@ namespace Oni
 		// エラーでストップ
 		if (mError) { return; }
 
-		mWaitSecond -= Scene::DeltaTime();
-
 		// 待ち
+		mWaitSecond -= Scene::DeltaTime();
 		if (mWaitSecond > 0) { return; }
+
+		// テキストボックス
+		if (mTextBoard)
+		{
+			if (mTextBoard->selectedUpdate()) { mTextBoard = nullptr; }
+			return;
+		}
 
 		// 読み込める行がまだあるか確認
 		if (mReadingRow >= mData[mEventName].size()) { return; }
@@ -82,7 +90,11 @@ namespace Oni
 
 	void GameEvent::draw() const
 	{
-
+		if (mTextBoard)
+		{
+			mTextBoard->drawBoard();
+			mTextBoard->draw();
+		}
 	}
 
 

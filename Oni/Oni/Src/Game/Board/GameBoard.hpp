@@ -40,7 +40,8 @@ namespace Oni
 		/// <summary>
 		/// 選択時の更新
 		/// </summary>
-		virtual void selectedUpdate() = 0;
+		/// <returns> true のときウィンドウを閉じる </returns>
+		virtual bool selectedUpdate() = 0;
 
 		/// <summary>
 		/// ウィンドウ背景の描画
