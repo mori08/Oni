@@ -22,6 +22,8 @@ namespace Oni
 
 		static const ObjectType ENEMY;  // “G
 
+		static const ObjectType PLAYER_ATTACK; // ƒvƒŒƒCƒ„[‚ÌUŒ‚
+
 	private:
 
 		/// <summary>

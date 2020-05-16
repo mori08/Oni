@@ -152,6 +152,9 @@
     <Filter Include="Src\Game\Board\Text">
       <UniqueIdentifier>{eeab6ed8-c8bc-48c1-a580-a5972f4e9cda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Game\Object\PlayerAttack">
+      <UniqueIdentifier>{42fbab26-ae4a-4baf-bbd1-1bb5ecca9599}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -495,6 +498,9 @@
     <ClCompile Include="Src\Game\Board\Text\TextBoard.cpp">
       <Filter>Src\Game\Board\Text</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Object\PlayerAttack\PlayerAttackObject.cpp">
+      <Filter>Src\Game\Object\PlayerAttack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Button\Button.hpp">
@@ -592,6 +598,9 @@
     </ClInclude>
     <ClInclude Include="Src\Game\Board\Text\TextBoard.hpp">
       <Filter>Src\Game\Board\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Object\PlayerAttack\PlayerAttackObject.hpp">
+      <Filter>Src\Game\Object\PlayerAttack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

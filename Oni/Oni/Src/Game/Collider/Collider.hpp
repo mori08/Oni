@@ -62,6 +62,15 @@ namespace Oni
 		void setVelocity(size_t index, double speed);
 
 		/// <summary>
+		/// ‘¬“x‚Ìİ’è
+		/// </summary>
+		/// <param name="velocity"> ‘¬“x </param>
+		void setVelocity(const Vec3& velocity)
+		{
+			mVelocity = velocity;
+		}
+
+		/// <summary>
 		/// ‰Á‘¬“x‚Ìİ’è
 		/// </summary>
 		/// <param name="index"> 0 X² , 1 Y² , 2 Z² </param>

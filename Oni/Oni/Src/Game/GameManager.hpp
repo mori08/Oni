@@ -106,6 +106,11 @@ namespace Oni
 		}
 
 		/// <summary>
+		/// オブジェクトの追加
+		/// </summary>
+		void addObject(GameObjectPtr& objectPtr);
+
+		/// <summary>
 		/// オブジェクトのリストの取得
 		/// </summary>
 		/// <returns> オブジェクトのリスト </returns>

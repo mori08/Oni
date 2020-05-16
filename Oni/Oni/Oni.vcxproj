@@ -238,6 +238,7 @@
     <ClCompile Include="Src\Game\ObjectType\ObjectType.cpp" />
     <ClCompile Include="Src\Game\Object\GameObject.cpp" />
     <ClCompile Include="Src\Game\Object\GhostGirl\GhostGirlObject.cpp" />
+    <ClCompile Include="Src\Game\Object\PlayerAttack\PlayerAttackObject.cpp" />
     <ClCompile Include="Src\Game\Object\Player\PlayerObject.cpp" />
     <ClCompile Include="Src\Game\Scene\GameScene.cpp" />
     <ClCompile Include="Src\Game\Scene\LoadGameScene.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="Src\Game\ObjectType\ObjectType.hpp" />
     <ClInclude Include="Src\Game\Object\GameObject.hpp" />
     <ClInclude Include="Src\Game\Object\GhostGirl\GhostGirlObject.hpp" />
+    <ClInclude Include="Src\Game\Object\PlayerAttack\PlayerAttackObject.hpp" />
     <ClInclude Include="Src\Game\Object\Player\PlayerObject.hpp" />
     <ClInclude Include="Src\Game\Scene\GameScene.hpp" />
     <ClInclude Include="Src\Game\Scene\LoadGameScene.hpp" />

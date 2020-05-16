@@ -12,6 +12,8 @@ namespace Oni
 
 	void GameBattleState::update()
 	{
+		
+
 		// オブジェクトの更新
 		for (auto& obj : GameManager::instance().getObjectList())
 		{

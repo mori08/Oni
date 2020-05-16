@@ -101,12 +101,14 @@ namespace Oni
 			++readingRow;
 		}
 
+		mObjectList.clear();
+
 		mObjectList.emplace_back(std::make_shared<PlayerObject>(Vec3(100, 100, 0)));
 		for (const auto& object : mObjectList)
 		{
 			mObjectNameMap[object->getName()] = object;
 		}
-		mState = std::make_unique<GameEventState>(U"TestEvent");
+		mState = std::make_unique<GameBattleState>();
 
 		return true;
 	}
@@ -127,6 +129,15 @@ namespace Oni
 	Vec2 GameManager::drawPos(const Vec3& pos)
 	{
 		return DRAW_BASE_POS + Vec2(pos.x, pos.y - pos.z);
+	}
+
+
+	void GameManager::addObject(GameObjectPtr& objectPtr)
+	{
+		if (mObjectNameMap.count(objectPtr->getName())) { return; }
+
+		mObjectList.emplace_back(objectPtr);
+		mObjectNameMap[objectPtr->getName()] = objectPtr;
 	}
 
 
