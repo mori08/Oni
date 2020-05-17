@@ -38,6 +38,8 @@ namespace Oni
 
 		void checkAnother(const ObjectBattleData::CheckInfo& checkInfo) override;
 
+		bool eraseAble() const override;
+
 	private:
 
 		/// <summary>

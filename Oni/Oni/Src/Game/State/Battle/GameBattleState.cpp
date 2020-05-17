@@ -12,8 +12,6 @@ namespace Oni
 
 	void GameBattleState::update()
 	{
-		
-
 		// オブジェクトの更新
 		for (auto& obj : GameManager::instance().getObjectList())
 		{
@@ -30,6 +28,9 @@ namespace Oni
 				(*objB)->passAnother(**objA);
 			}
 		}
+
+		// オブジェクトの削除
+		Erase_if(GameManager::instance().getObjectList(), [](const GameObjectPtr& obj) { return obj->eraseAble(); });
 
 		// y座標でソート
 		GameManager::instance().getObjectList().sort([](GameObjectPtr& a, GameObjectPtr& b) { return *a < *b; });

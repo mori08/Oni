@@ -10,13 +10,13 @@ namespace
 	constexpr Size SLICE_SIZE(16, 16);
 
 	// Œõ‚ª‰e‚É‘ã‚í‚éŽžŠÔ(s)
-	constexpr double LIGHT_SECOND = 2.0;
+	constexpr double LIGHT_SECOND = 1.0;
 	// ‰e‚ªÁ‚¦‚éŽžŠÔ(s)
-	constexpr double SHADOW_SECOND = 10.0;
+	constexpr double SHADOW_SECOND = 20.0;
 	// ‰e‚É‚©‚©‚éd—Í‰Á‘¬“x
 	constexpr double GRAVITY = -400;
 	// ‰e‚Ì‘¬‚³
-	constexpr double SHADOW_SPEED = 48;
+	constexpr double SHADOW_SPEED = 16;
 
 	// Œõ‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
 	const Oni::Animation LIGHT_ANIM
@@ -59,10 +59,13 @@ namespace Oni
 		mBattleData->setAction(U"Light"        , [this](double actionSecond){ updateLight(actionSecond); });
 		mBattleData->setAction(U"LightToShadow", [this](double){ lightToShadow(); });
 		mBattleData->setAction(U"Shadow"       , [this](double actionSecond){ updateShadow(actionSecond); });
+		mBattleData->changeAction(U"Light");
 
 		mSlide.setAnimation(U"Light"        , LIGHT_ANIM          );
 		mSlide.setAnimation(U"LightToShadow", LIGHT_TO_SHADOW_ANIM);
 		mSlide.setAnimation(U"Shadow"       , SHADOW_ANIM         );
+
+		mCollider.setVelocity(velocity);
 
 		mEraseAble = false;
 	}
@@ -70,10 +73,21 @@ namespace Oni
 
 	void PlayerAttackObject::checkAnother(const ObjectBattleData::CheckInfo& checkInfo)
 	{
-		if (auto pos = checkTypeAndGetPos(ObjectType::PLAYER))
+		if (auto pos = checkTypeAndGetPos(checkInfo, ObjectType::PLAYER))
 		{
 			mPlayerPos = pos.value().xy();
 		}
+
+		if (checkTypeAndCollision(checkInfo, ObjectType::PLAYER) && mBattleData->getActionName() == U"Shadow")
+		{
+			mEraseAble = true;
+		}
+	}
+
+
+	bool PlayerAttackObject::eraseAble() const
+	{
+		return mEraseAble;
 	}
 
 

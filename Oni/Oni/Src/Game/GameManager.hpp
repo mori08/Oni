@@ -108,7 +108,7 @@ namespace Oni
 		/// <summary>
 		/// オブジェクトの追加
 		/// </summary>
-		void addObject(GameObjectPtr& objectPtr);
+		void addObject(const GameObjectPtr& objectPtr);
 
 		/// <summary>
 		/// オブジェクトのリストの取得

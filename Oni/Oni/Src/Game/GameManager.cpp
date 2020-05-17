@@ -132,7 +132,7 @@ namespace Oni
 	}
 
 
-	void GameManager::addObject(GameObjectPtr& objectPtr)
+	void GameManager::addObject(const GameObjectPtr& objectPtr)
 	{
 		if (mObjectNameMap.count(objectPtr->getName())) { return; }
 

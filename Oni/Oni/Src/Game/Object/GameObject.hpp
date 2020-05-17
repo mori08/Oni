@@ -83,6 +83,12 @@ namespace Oni
 		}
 
 		/// <summary>
+		/// 削除する条件
+		/// </summary>
+		/// <returns> true のとき削除 </returns>
+		virtual bool eraseAble() const;
+
+		/// <summary>
 		/// コライダーの描画
 		/// </summary>
 		void drawCollider() const;
@@ -139,11 +145,12 @@ namespace Oni
 		/// <summary>
 		/// 指定の種類のオブジェクトのとき座標の取得
 		/// </summary>
-		/// <param name="checkType"> 指定する種類 </param>
+		/// <param name="checkInfo"> 判定確認用の情報 </param>
+		/// <param name="checkType"> 指定する種類     </param>
 		/// <returns>
 		/// 座標
 		/// </returns>
-		Optional<Vec3> checkTypeAndGetPos(const ObjectType& checkType) const;
+		static Optional<Vec3> checkTypeAndGetPos(const ObjectBattleData::CheckInfo& checkInfo, const ObjectType& checkType);
 
 	};
 

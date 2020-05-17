@@ -1,4 +1,6 @@
 #include "PlayerObject.hpp"
+#include "../PlayerAttack/PlayerAttackObject.hpp"
+#include "../../GameManager.hpp"
 
 
 namespace
@@ -17,6 +19,9 @@ namespace
 	constexpr double JAMP_SPEED = 280;
 	// 重力加速度
 	constexpr double GRAVITY = 560;
+
+	// 攻撃の速さ
+	constexpr double LIGHT_SPEED = 300;
 
 	// 待ち状態のアニメーション
 	const Oni::Animation WAIT_ANIM
@@ -106,9 +111,15 @@ namespace Oni
 		mCollider.setVelocity(Collider::Y, movement.y);
 
 		// ジャンプ
-		if (mCollider.isOnGround() && KeyC.down())
+		if (mCollider.isOnGround() && KeyX.down())
 		{
 			mCollider.setVelocity(Collider::Z, JAMP_SPEED);
+		}
+
+		// 攻撃
+		if (KeyZ.up())
+		{
+			GameManager::instance().addObject(std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Right(LIGHT_SPEED * mDirection)));
 		}
 
 		// アニメーションの更新

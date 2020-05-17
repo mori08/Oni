@@ -58,6 +58,12 @@ namespace Oni
 	}
 
 
+	bool GameObject::eraseAble() const
+	{
+		return false;
+	}
+
+
 	void GameObject::drawCollider() const
 	{
 		const Vec3 m = mCollider.minPos();
@@ -100,11 +106,11 @@ namespace Oni
 	}
 
 
-	Optional<Vec3> GameObject::checkTypeAndGetPos(const ObjectType& checkType) const
+	Optional<Vec3> GameObject::checkTypeAndGetPos(const ObjectBattleData::CheckInfo& checkInfo, const ObjectType& checkType)
 	{
-		if (mType & checkType)
+		if (checkInfo.type & checkType)
 		{
-			return mCollider.centerPos();
+			return checkInfo.collider.centerPos();
 		}
 		return none;
 	}

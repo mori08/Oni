@@ -125,6 +125,15 @@ namespace Oni
 		void changeAction(const String& name);
 
 		/// <summary>
+		/// 実行中のアクションの名前の取得
+		/// </summary>
+		/// <returns> 実行中のアクションの名前 </returns>
+		const String& getActionName() const
+		{
+			return mActionName;
+		}
+
+		/// <summary>
 		/// 判定の追加
 		/// </summary>
 		/// <param name="collider"> コライダー     </param>
