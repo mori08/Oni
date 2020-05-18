@@ -25,6 +25,8 @@ namespace Oni
 		mVelocity += Scene::DeltaTime() * mAcceleration;
 		Vec3 v = Scene::DeltaTime() * mVelocity; // ‘¬“x(pixel/second)
 
+		mIsOnCollisionStage = false;
+
 		// -------------
 		// Z²•ûŒü‚Ì“®‚«
 		// -------------
@@ -69,6 +71,7 @@ namespace Oni
 			{
 				// •Ç‚ÉÕ“Ë
 				mVelocity.x = 0;
+				mIsOnCollisionStage = true;
 			}
 			else if (terrainHeight - minPos().z < -GameManager::SQUARE_Z + 1)
 			{
@@ -94,6 +97,7 @@ namespace Oni
 			{
 				// •Ç‚É‚Ô‚Â‚©‚é
 				mVelocity.x = 0;
+				mIsOnCollisionStage = true;
 			}
 			else
 			{
@@ -116,6 +120,7 @@ namespace Oni
 			{
 				// •Ç‚ÉÕ“Ë
 				mVelocity.y = 0;
+				mIsOnCollisionStage = true;
 			}
 			else if (terrainHeight - minPos().z < -1)
 			{
@@ -140,6 +145,7 @@ namespace Oni
 			{
 				// •Ç‚É‚Ô‚Â‚©‚é
 				mVelocity.y = 0;
+				mIsOnCollisionStage = true;
 			}
 			else
 			{
@@ -169,6 +175,12 @@ namespace Oni
 		case Y: mAcceleration.y = value; break;
 		case Z: mAcceleration.z = value; break;
 		}
+	}
+
+
+	bool Collider::isOnCollisionStage() const
+	{
+		return mIsOnGround || mIsOnCollisionStage;
 	}
 
 }

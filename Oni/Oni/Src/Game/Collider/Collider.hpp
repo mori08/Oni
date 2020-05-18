@@ -25,6 +25,9 @@ namespace Oni
 		// 地面に接しているとき true , そうでないとき false
 		bool mIsOnGround;
 
+		// ステージに衝突したとき true , そうでないとき false
+		bool mIsOnCollisionStage;
+
 		// 座標
 		Vec3 mPos;
 
@@ -81,10 +84,16 @@ namespace Oni
 		/// 地面に接しているか示す
 		/// </summary>
 		/// <returns> 地面に接しているとき true , そうでないとき false </returns>
-		bool isOnGround()
+		bool isOnGround() const
 		{
 			return mIsOnGround;
 		}
+
+		/// <summary>
+		/// 地形に衝突するか示す
+		/// </summary>
+		/// <returns> 衝突するとき true , そうでないとき false </returns>
+		bool isOnCollisionStage() const;
 
 		/// <summary>
 		/// x,y,zが各々の最小値をとる座標の取得

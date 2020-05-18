@@ -93,7 +93,7 @@ namespace Oni
 
 	void PlayerAttackObject::updateLight(double actionSecond)
 	{
-		if (actionSecond > LIGHT_SECOND)
+		if (actionSecond > LIGHT_SECOND || mCollider.isOnCollisionStage())
 		{
 			mSlide.start(U"LightToShadow");
 			mBattleData->changeAction(U"LightToShadow");
