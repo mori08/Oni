@@ -423,9 +423,6 @@
     <ClCompile Include="Src\Title\TitleScene.cpp">
       <Filter>Src\Title</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Button\Button.cpp">
-      <Filter>Src\Button</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Record\Record.cpp">
       <Filter>Src\Record</Filter>
     </ClCompile>

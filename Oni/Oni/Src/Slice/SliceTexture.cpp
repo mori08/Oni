@@ -26,7 +26,7 @@ namespace Oni
 	bool SliceTexture::update()
 	{
 		mChangeSpan += Scene::DeltaTime();
-		bool spanIsFinished = mChangeSpan > mAnimationMap.find(mAnimationName)->second.getTotalSecond();
+		bool spanIsFinished = isFinished();
 
 		// ‰æ‘œ‚ªƒ‹[ƒv‚·‚é‚Æ‚«
 		if (mAnimationMap.find(mAnimationName)->second.loop())

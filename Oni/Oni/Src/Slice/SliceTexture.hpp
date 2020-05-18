@@ -70,6 +70,15 @@ namespace Oni
 		bool update();
 
 		/// <summary>
+		/// 現在実行中のアニメーションが終了しているか示す
+		/// </summary>
+		/// <returns> 終了しているなら true , 実行中なら false </returns>
+		bool isFinished() const
+		{
+			return mChangeSpan > mAnimationMap.find(mAnimationName)->second.getTotalSecond();
+		}
+
+		/// <summary>
 		/// 画像の反転
 		/// </summary>
 		void mirror()

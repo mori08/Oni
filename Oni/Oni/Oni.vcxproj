@@ -226,7 +226,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Button\Button.cpp" />
     <ClCompile Include="Src\Button\ButtonManager.cpp" />
     <ClCompile Include="Src\Game\Board\GameBoard.cpp" />
     <ClCompile Include="Src\Game\Board\Text\TextBoard.cpp" />

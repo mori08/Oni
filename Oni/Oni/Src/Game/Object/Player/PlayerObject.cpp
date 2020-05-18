@@ -14,19 +14,29 @@ namespace
 	// 初期体力
 	constexpr double INIT_HP = 100;
 	// 歩く速さ
-	constexpr double WALK_SPEED = 90;
+	constexpr double WALK_SPEED = 120;
 	// ジャンプの初速度の大きさ (z軸方向で3.5マスくらい)
-	constexpr double JAMP_SPEED = 280;
+	constexpr double JAMP_SPEED = 200;
 	// 重力加速度
 	constexpr double GRAVITY = 560;
 
 	// 攻撃の速さ
 	constexpr double LIGHT_SPEED = 300;
 
+	// 歩くマウスとの距離
+	constexpr double WALK_DISTANCE = 10.0;
+
 	// 待ち状態のアニメーション
 	const Oni::Animation WAIT_ANIM
 	(
 		Oni::PosOrder{ {0,Point(0,0)} },
+		false
+	);
+
+	// 1歩歩き状態のアニメーション
+	const Oni::Animation ONE_WALK_ANIM
+	(
+		Oni::PosOrder{ {0.15,Point(2,0)},{0.15,Point(0,0)} },
 		false
 	);
 
@@ -68,6 +78,7 @@ namespace Oni
 
 		mSlide.setAnimation(U"Wait", WAIT_ANIM);
 		mSlide.setAnimation(U"Walk", WALK_ANIM);
+		mSlide.setAnimation(U"OneWalk", ONE_WALK_ANIM);
 		mSlide.setAnimation(U"Jamp", JAMP_ANIM);
 
 		mDirection = -1;
@@ -99,25 +110,34 @@ namespace Oni
 
 	void PlayerObject::control()
 	{
-		// 移動方向の決定
-		Vec2 movement = Vec2::Zero();
-		movement.x += KeyRight.pressed() - KeyLeft.pressed();
-		movement.y += KeyDown .pressed() - KeyUp  .pressed();
-		movement = movement.isZero() ? Vec2::Zero() : movement.normalized();
-		movement *= WALK_SPEED;
+		// 移動量の決定
+		const Vec3 groundPos = Vec3(mCollider.centerPos().xy(), GameManager::instance().getStage().height(mCollider));
+		Vec2 movement = Cursor::PosF() - GameManager::drawPos(groundPos);
+		if (!Scene::Rect().mouseOver())
+		{
+			movement = Vec2::Zero();
+		}
+		else if (movement.length() > WALK_DISTANCE)
+		{
+			movement = WALK_SPEED * movement.normalize();
+		}
+		else
+		{
+			movement = Vec2::Zero();
+		}
 
 		// XY平面方向での移動速度の設定
 		mCollider.setVelocity(Collider::X, movement.x);
 		mCollider.setVelocity(Collider::Y, movement.y);
 
 		// ジャンプ
-		if (mCollider.isOnGround() && KeyX.down())
+		if (mCollider.isOnGround() && MouseR.down())
 		{
 			mCollider.setVelocity(Collider::Z, JAMP_SPEED);
 		}
 
 		// 攻撃
-		if (KeyZ.up())
+		if (MouseL.up())
 		{
 			GameManager::instance().addObject(std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Right(LIGHT_SPEED * mDirection)));
 		}
@@ -125,13 +145,16 @@ namespace Oni
 		// アニメーションの更新
 		if (mCollider.isOnGround())
 		{
-			if (movement.isZero()) 
+			if (mSlide.isFinished())
 			{
-				mSlide.startAnotherAnimation(U"Wait"); 
-			}
-			else 
-			{ 
-				mSlide.startAnotherAnimation(U"Walk"); 
+				if (movement.isZero())
+				{
+					mSlide.startAnotherAnimation(U"Wait");
+				}
+				else
+				{
+					mSlide.start(U"OneWalk");
+				}
 			}
 		}
 		else

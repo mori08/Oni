@@ -29,58 +29,6 @@ namespace Oni
 	}
 
 
-	void ButtonManager::setVerticalAdjacentButton(const String& upName, const String& downName)
-	{
-		if (!mButtonMap.count(upName))
-		{
-			printDebug(U"[ButtonManager::setVerticalAdjacentButton]");
-			printDebug(U"存在しないボタンが指定されました");
-			printDebug(U"upName > " + upName);
-			return;
-		}
-
-		if (!mButtonMap.count(downName))
-		{
-			printDebug(U"[ButtonManager::setVerticalAdjacentButton]");
-			printDebug(U"存在しないボタンが指定されました");
-			printDebug(U"downName > " + downName);
-			return;
-		}
-
-		ButtonPtr upButton   = mButtonMap[upName];
-		ButtonPtr downButton = mButtonMap[downName];
-
-		upButton->  setAdjacentButton(KeyDown, downButton);
-		downButton->setAdjacentButton(KeyUp  , upButton  );
-	}
-
-
-	void ButtonManager::setHorizontalAdjacentButton(const String& leftName, const String& rightName)
-	{
-		if (!mButtonMap.count(leftName))
-		{
-			printDebug(U"[ButtonManager::setHorizontalAdjacentButton]");
-			printDebug(U"存在しないボタンが指定されました");
-			printDebug(U"leftName > " + leftName);
-			return;
-		}
-
-		if (!mButtonMap.count(rightName))
-		{
-			printDebug(U"[ButtonManager::setHorizontalAdjacentButton]");
-			printDebug(U"存在しないボタンが指定されました");
-			printDebug(U"rightName > " + rightName);
-			return;
-		}
-
-		ButtonPtr leftButton  = mButtonMap[leftName];
-		ButtonPtr rightButton = mButtonMap[rightName];
-
-		leftButton ->setAdjacentButton(KeyRight, rightButton);
-		rightButton->setAdjacentButton(KeyLeft , leftButton );
-	}
-
-
 	void ButtonManager::setSelectedButton(const String& name)
 	{
 		if (!mButtonMap.count(name))
@@ -119,15 +67,15 @@ namespace Oni
 	void ButtonManager::update()
 	{
 		// ボタンの選択
-		if (auto buttonOpt = mSelectedButtonPtr->getAdjacentButton())
+		for (const auto& button : mButtonMap)
 		{
-			mSelectedButtonPtr = buttonOpt.value();
-		}
+			if (!button.second->getRegion().mouseOver()) { continue; }
+				
+			mSelectedButtonPtr = button.second;
+			
+			if (MouseL.up()) { mSelectedButtonPtr->OnClick(); }
 
-		// 決定キーを押したときの処理
-		if (KeyZ.up())
-		{
-			mSelectedButtonPtr->OnClick();
+			break;
 		}
 	}
 

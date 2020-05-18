@@ -12,7 +12,7 @@ namespace
 	// Œõ‚ª‰e‚É‘ã‚í‚éŠÔ(s)
 	constexpr double LIGHT_SECOND = 1.0;
 	// ‰e‚ªÁ‚¦‚éŠÔ(s)
-	constexpr double SHADOW_SECOND = 20.0;
+	constexpr double SHADOW_SECOND = 32.0;
 	// ‰e‚É‚©‚©‚éd—Í‰Á‘¬“x
 	constexpr double GRAVITY = -400;
 	// ‰e‚Ì‘¬‚³
