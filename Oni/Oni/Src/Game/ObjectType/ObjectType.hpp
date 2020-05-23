@@ -24,6 +24,8 @@ namespace Oni
 
 		static const ObjectType PLAYER_ATTACK; // プレイヤーの攻撃
 
+		static const ObjectType PLAYER_ENERGY; // プレイヤーのエネルギー
+
 	private:
 
 		/// <summary>

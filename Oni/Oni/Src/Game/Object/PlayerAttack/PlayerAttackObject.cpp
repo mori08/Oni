@@ -71,11 +71,30 @@ namespace Oni
 	}
 
 
+	void PlayerAttackObject::passAnother(GameObject& another) const
+	{
+		if (mBattleData->getActionName() == U"Light")
+		{
+			another.checkAnother(ObjectBattleData::CheckInfo(mCollider, ObjectType::PLAYER_ATTACK, 0));
+		}
+
+		if (mBattleData->getActionName() == U"Shadow")
+		{
+			another.checkAnother(ObjectBattleData::CheckInfo(mCollider, ObjectType::PLAYER_ENERGY, 0));
+		}
+	}
+
+
 	void PlayerAttackObject::checkAnother(const ObjectBattleData::CheckInfo& checkInfo)
 	{
 		if (auto pos = checkTypeAndGetPos(checkInfo, ObjectType::PLAYER))
 		{
-			mPlayerPos = pos.value().xy();
+			mDirection += (pos.value().xy() - mCollider.centerPos().xy()).normalized();
+		}
+
+		if (checkTypeAndCollision(checkInfo, ObjectType::PLAYER_ENERGY))
+		{
+			mDirection += (mCollider.centerPos().xy() - checkInfo.collider.centerPos().xy()).normalized();
 		}
 
 		if (checkTypeAndCollision(checkInfo, ObjectType::PLAYER) && mBattleData->getActionName() == U"Shadow")
@@ -115,7 +134,8 @@ namespace Oni
 
 	void PlayerAttackObject::updateShadow(double actionSecond)
 	{
-		const Vec2 movement = SHADOW_SPEED * (mPlayerPos - mCollider.centerPos().xy()).normalized();
+		const Vec2 movement = mDirection.isZero() ? Vec2::Zero() : (SHADOW_SPEED * mDirection.normalized());
+		mDirection = Vec2::Zero();
 
 		mCollider.setVelocity(Collider::X, movement.x);
 		mCollider.setVelocity(Collider::Y, movement.y);

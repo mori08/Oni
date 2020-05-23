@@ -116,13 +116,13 @@ namespace Oni
 			return mEventData;
 		}
 
-	protected:
-
 		/// <summary>
 		/// 他のオブジェクトの判定を受取(バトルでの使用)
 		/// </summary>
 		/// <param name="checkInfo">  </param>
 		virtual void checkAnother(const ObjectBattleData::CheckInfo& chekcInfo);
+
+	protected:
 
 		/// <summary>
 		/// ColliderとSliceTextureから画像を描画する座標を決定

@@ -19,8 +19,8 @@ namespace Oni
 
 	private:
 
-		// プレイヤーのXY座標
-		Vec2 mPlayerPos;
+		// 移動方向
+		Vec2 mDirection;
 
 		// 削除条件
 		bool mEraseAble;
@@ -35,6 +35,8 @@ namespace Oni
 		PlayerAttackObject(const Vec3& pos, const Vec3& velocity);
 
 	private:
+
+		void passAnother(GameObject& another) const override;
 
 		void checkAnother(const ObjectBattleData::CheckInfo& checkInfo) override;
 
