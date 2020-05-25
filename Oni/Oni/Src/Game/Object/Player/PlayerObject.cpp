@@ -7,9 +7,9 @@ namespace
 {
 	// オブジェクトのサイズ
 	constexpr Vec3 COLLIDER_SIZE(25, 20, 50);
-
 	// 画像のサイズ
 	constexpr Size TEXTURE_SIZE(60, 60);
+
 
 	// 初期体力
 	constexpr double INIT_HP = 100;
@@ -19,12 +19,14 @@ namespace
 	constexpr double JAMP_SPEED = 200;
 	// 重力加速度
 	constexpr double GRAVITY = 560;
+	// 歩くマウスとの距離
+	constexpr double WALK_DISTANCE = 10.0;
+
 
 	// 攻撃の速さ
 	constexpr double LIGHT_SPEED = 300;
-
-	// 歩くマウスとの距離
-	constexpr double WALK_DISTANCE = 10.0;
+	// 1つ分のチャージに必要な時間(s)
+	constexpr double ONE_CHARGE_TIME = 1.0;
 
 	// 待ち状態のアニメーション
 	const Oni::Animation WAIT_ANIM
@@ -82,6 +84,8 @@ namespace Oni
 		mSlide.setAnimation(U"Jamp", JAMP_ANIM);
 
 		mDirection = -1;
+
+		mChargeSecond = 0;
 	}
 
 
@@ -137,14 +141,30 @@ namespace Oni
 		}
 
 		// 攻撃
+		if (MouseL.pressed())
+		{
+			mChargeSecond += Scene::DeltaTime();
+		}
 		if (MouseL.up())
 		{
-			GameManager::instance().addObject(std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Right(LIGHT_SPEED * mDirection)));
+			if (mChargeSecond < ONE_CHARGE_TIME)
+			{
+				// 通常攻撃
+				GameManager::instance().addObject(std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Right(LIGHT_SPEED * mDirection)));
+			}
+			else
+			{
+				// 溜め攻撃
+				tripleAttack();
+			}
+			mChargeSecond = 0;
 		}
 
 		// アニメーションの更新
 		if (mCollider.isOnGround())
 		{
+			// 地上
+
 			if (mSlide.isFinished())
 			{
 				if (movement.isZero())
@@ -159,6 +179,7 @@ namespace Oni
 		}
 		else
 		{
+			// 空中
 			mSlide.startAnotherAnimation(U"Jamp");
 		}
 
@@ -168,6 +189,38 @@ namespace Oni
 			mDirection *= -1;
 			mSlide.mirror();
 		}
+	}
+
+
+	void PlayerObject::tripleAttack()
+	{
+		// 追加の攻撃の角度
+		constexpr double attackAngle = 0.1;
+
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Right(LIGHT_SPEED * mDirection))
+		);
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), LIGHT_SPEED * Vec3(mDirection * Cos(attackAngle), +Sin(attackAngle), 0))
+		);
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), LIGHT_SPEED * Vec3(mDirection * Cos(attackAngle), -Sin(attackAngle), 0))
+		);
+	}
+
+
+	void PlayerObject::spinAttack()
+	{
+
+	}
+
+
+	void PlayerObject::chaseAttack()
+	{
+
 	}
 
 }

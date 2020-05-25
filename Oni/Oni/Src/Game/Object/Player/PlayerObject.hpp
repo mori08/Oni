@@ -17,6 +17,9 @@ namespace Oni
 		// 向き ( +1のとき右向き, -1のとき左向き )
 		int32 mDirection;
 
+		// 攻撃の溜め時間(s)
+		double mChargeSecond;
+
 	public:
 
 		PlayerObject(const Vec3& pos);
@@ -35,6 +38,23 @@ namespace Oni
 		/// 待ち状態(バトルで使用)
 		/// </summary>
 		void control();
+
+	private:
+
+		/// <summary>
+		/// 3連攻撃
+		/// </summary>
+		void tripleAttack();
+
+		/// <summary>
+		/// 回転攻撃
+		/// </summary>
+		void spinAttack();
+
+		/// <summary>
+		/// 追跡攻撃
+		/// </summary>
+		void chaseAttack();
 
 	};
 
