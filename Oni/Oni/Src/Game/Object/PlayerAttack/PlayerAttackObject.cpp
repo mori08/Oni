@@ -1,4 +1,5 @@
 #include "PlayerAttackObject.hpp"
+#include "../../../MyLibrary.hpp"
 
 
 namespace
@@ -9,14 +10,21 @@ namespace
 	// ‰æ‘œƒTƒCƒY
 	constexpr Size SLICE_SIZE(16, 16);
 
+	// Œõ‚Ì‘¬‚³
+	constexpr double LIGHT_SPEED = 300.0;
 	// Œõ‚ª‰e‚É‘ã‚í‚éŽžŠÔ(s)
 	constexpr double LIGHT_SECOND = 1.0;
+	// “G‚ð’ÇÕ‚ð‚Í‚¶‚ß‚éŽžŠÔ(s)
+	constexpr double CHASE_SECOND = 0.2;
 	// ‰e‚ªÁ‚¦‚éŽžŠÔ(s)
 	constexpr double SHADOW_SECOND = 32.0;
 	// ‰e‚É‚©‚©‚éd—Í‰Á‘¬“x
 	constexpr double GRAVITY = -400;
 	// ‰e‚Ì‘¬‚³
 	constexpr double SHADOW_SPEED = 16;
+
+	// ‰ñ“]Šp‚Ì•ÏX‚Ì”ä—¦
+	constexpr double ANGLE_RATE = 0.5;
 
 	// Œõ‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
 	const Oni::Animation LIGHT_ANIM
@@ -46,7 +54,7 @@ namespace Oni
 
 	uint32 PlayerAttackObject::sShareId = 0;
 
-	PlayerAttackObject::PlayerAttackObject(const Vec3& pos, const Vec3& velocity)
+	PlayerAttackObject::PlayerAttackObject(const Vec3& pos, const Vec3& velocity, const String& actionName)
 		: GameObject
 		(
 			U"PlayerAttack" + ToString(sShareId++),
@@ -59,21 +67,26 @@ namespace Oni
 		mBattleData->setAction(U"Light"        , [this](double actionSecond){ updateLight(actionSecond); });
 		mBattleData->setAction(U"LightToShadow", [this](double){ lightToShadow(); });
 		mBattleData->setAction(U"Shadow"       , [this](double actionSecond){ updateShadow(actionSecond); });
-		mBattleData->changeAction(U"Light");
+		mBattleData->setAction(U"Spin"         , [this](double actionSecond){ spinToPlayer(actionSecond); });
+		mBattleData->setAction(U"Chase"        , [this](double actionSecond){ chaseEnemy(actionSecond); });
+		mBattleData->changeAction(actionName);
 
 		mSlide.setAnimation(U"Light"        , LIGHT_ANIM          );
 		mSlide.setAnimation(U"LightToShadow", LIGHT_TO_SHADOW_ANIM);
 		mSlide.setAnimation(U"Shadow"       , SHADOW_ANIM         );
+		mSlide.start(U"Light");
 
 		mCollider.setVelocity(velocity);
 
-		mEraseAble = false;
+		mEnemyExist     = false;
+		mEraseAble      = false;
+		mCollisionEnemy = false;
 	}
 
 
 	void PlayerAttackObject::passAnother(GameObject& another) const
 	{
-		if (mBattleData->getActionName() == U"Light")
+		if (mBattleData->getActionName() != U"Shadow" && mBattleData->getActionName() != U"LightToShadow")
 		{
 			another.checkAnother(ObjectBattleData::CheckInfo(mCollider, ObjectType::PLAYER_ATTACK, 0));
 		}
@@ -89,17 +102,37 @@ namespace Oni
 	{
 		if (auto pos = checkTypeAndGetPos(checkInfo, ObjectType::PLAYER))
 		{
-			mDirection += (pos.value().xy() - mCollider.centerPos().xy()).normalized();
+			mPlayerPos = pos.value();
+			mShadowMoveDirection += (pos.value().xy() - mCollider.centerPos().xy()).normalized();
 		}
-
 		if (checkTypeAndCollision(checkInfo, ObjectType::PLAYER_ENERGY))
 		{
-			mDirection += (mCollider.centerPos().xy() - checkInfo.collider.centerPos().xy()).normalized();
+			mShadowMoveDirection += (mCollider.centerPos().xy() - checkInfo.collider.centerPos().xy()).normalized();
 		}
 
 		if (checkTypeAndCollision(checkInfo, ObjectType::PLAYER) && mBattleData->getActionName() == U"Shadow")
 		{
 			mEraseAble = true;
+		}
+		
+		if (checkTypeAndCollision(checkInfo, ObjectType::ENEMY))
+		{
+			mCollisionEnemy = true;
+		}
+		
+		if (auto pos = checkTypeAndGetPos(checkInfo, ObjectType::ENEMY))
+		{
+			if (!mEnemyExist)
+			{
+				mEnemyExist = true;
+				mNearestEnemyPos = pos.value();
+				return;
+			}
+			mEnemyExist = true;
+			if (mNearestEnemyPos.distanceFrom(mCollider.centerPos()) > pos.value().distanceFrom(mCollider.centerPos()))
+			{
+				mNearestEnemyPos = pos.value();
+			}
 		}
 	}
 
@@ -112,11 +145,15 @@ namespace Oni
 
 	void PlayerAttackObject::updateLight(double actionSecond)
 	{
-		if (actionSecond > LIGHT_SECOND || mCollider.isOnCollisionStage())
+		mEnemyExist = false;
+
+		if (actionSecond > LIGHT_SECOND || mCollider.isOnCollisionStage() || mCollisionEnemy)
 		{
 			mSlide.start(U"LightToShadow");
 			mBattleData->changeAction(U"LightToShadow");
 			mCollider.setVelocity(Vec3::Zero());
+			mCollider.setAcceleration(Collider::X, 0);
+			mCollider.setAcceleration(Collider::Y, 0);
 			mCollider.setAcceleration(Collider::Z, GRAVITY);
 		}
 	}
@@ -134,8 +171,8 @@ namespace Oni
 
 	void PlayerAttackObject::updateShadow(double actionSecond)
 	{
-		const Vec2 movement = mDirection.isZero() ? Vec2::Zero() : (SHADOW_SPEED * mDirection.normalized());
-		mDirection = Vec2::Zero();
+		const Vec2 movement = mShadowMoveDirection.isZero() ? Vec2::Zero() : (SHADOW_SPEED * mShadowMoveDirection.normalized());
+		mShadowMoveDirection = Vec2::Zero();
 
 		mCollider.setVelocity(Collider::X, movement.x);
 		mCollider.setVelocity(Collider::Y, movement.y);
@@ -146,4 +183,34 @@ namespace Oni
 		}
 	}
 
+
+	void PlayerAttackObject::spinToPlayer(double actionSecond)
+	{
+		double angle = atan2(mCollider.velocity().y, mCollider.velocity().x);
+
+		// –Ú“IŠp“x‚ÌŒvŽZ
+		Vec2 toGoalVec = mPlayerPos.xy() - mCollider.centerPos().xy(); // ƒvƒŒƒCƒ„[‚Ö‚ÌƒxƒNƒgƒ‹
+		toGoalVec = Vec2(-toGoalVec.y, toGoalVec.x); // 90“x‰ñ“]
+		double goalAngle = atan2(toGoalVec.y, toGoalVec.x);
+		goalAngle = goalAngle > angle ? goalAngle : (goalAngle + Math::TwoPi);
+
+		internalDividingPoint(angle, goalAngle, ANGLE_RATE);
+		
+		mCollider.setVelocity(LIGHT_SPEED * Vec3(Cos(angle), Sin(angle), 0));
+
+		updateLight(actionSecond);
+	}
+
+
+	void PlayerAttackObject::chaseEnemy(double actionSecond)
+	{
+		if (actionSecond > CHASE_SECOND)
+		{
+			const Vec3 goal = mEnemyExist ? mNearestEnemyPos : mCollider.centerPos();
+			mCollider.setVelocity(LIGHT_SPEED * (goal - mCollider.centerPos()).normalized());
+			mBattleData->changeAction(U"Light");
+		}
+
+		updateLight(actionSecond);
+	}
 }

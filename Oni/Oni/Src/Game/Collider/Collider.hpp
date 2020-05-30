@@ -74,11 +74,29 @@ namespace Oni
 		}
 
 		/// <summary>
+		/// 速度の取得
+		/// </summary>
+		const Vec3& velocity() const
+		{
+			return mVelocity;
+		}
+
+		/// <summary>
 		/// 加速度の設定
 		/// </summary>
 		/// <param name="index"> 0 X軸 , 1 Y軸 , 2 Z軸 </param>
 		/// <param name="value"> 加速度の大きさ        </param>
 		void setAcceleration(size_t index, double value);
+
+		/// <summary>
+		/// 加速度の設定
+		/// </summary>
+		/// <param name="index"> 0 X軸 , 1 Y軸 , 2 Z軸 </param>
+		/// <param name="value"> 加速度の大きさ        </param>
+		void setAcceleration(const Vec3& acceleration)
+		{
+			mAcceleration = acceleration;
+		}
 
 		/// <summary>
 		/// 地面に接しているか示す

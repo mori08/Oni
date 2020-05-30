@@ -155,7 +155,7 @@ namespace Oni
 			else
 			{
 				// ó≠ÇﬂçUåÇ
-				tripleAttack();
+				chaseAttack();
 			}
 			mChargeSecond = 0;
 		}
@@ -214,13 +214,40 @@ namespace Oni
 
 	void PlayerObject::spinAttack()
 	{
-
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Right(LIGHT_SPEED), U"Spin")
+		);
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Up(LIGHT_SPEED), U"Spin")
+		);
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Left(LIGHT_SPEED), U"Spin")
+		);
+		GameManager::instance().addObject
+		(
+			std::make_shared<PlayerAttackObject>(mCollider.centerPos(), Vec3::Down(LIGHT_SPEED), U"Spin")
+		);
 	}
 
 
 	void PlayerObject::chaseAttack()
 	{
+		// åıÇÃêî
+		constexpr int32 LIGHT_NUM = 5;
 
+		for (int32 i = 0; i < LIGHT_NUM; ++i)
+		{
+			const double angle    = Math::TwoPi * i / LIGHT_NUM;
+			const Vec3   velocity = LIGHT_SPEED*Vec3(mDirection * Cos(angle), Sin(angle), 0);
+			
+			GameManager::instance().addObject
+			(
+				std::make_shared<PlayerAttackObject>(mCollider.centerPos(), velocity, U"Chase")
+			);
+		}
 	}
 
 }
