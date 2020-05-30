@@ -31,28 +31,28 @@ namespace
 	// 待ち状態のアニメーション
 	const Oni::Animation WAIT_ANIM
 	(
-		Oni::PosOrder{ {0,Point(0,0)} },
+		Oni::PosOrder{ {0,Point(0,1)} },
 		false
 	);
 
 	// 1歩歩き状態のアニメーション
 	const Oni::Animation ONE_WALK_ANIM
 	(
-		Oni::PosOrder{ {0.15,Point(2,0)},{0.15,Point(0,0)} },
+		Oni::PosOrder{ {0.15,Point(1,1)},{0.15,Point(0,1)} },
 		false
 	);
 
 	// 歩き状態のアニメーション
 	const Oni::Animation WALK_ANIM
 	(
-		Oni::PosOrder{ {0.15,Point(2,0)},{0.15,Point(0,0)} },
+		Oni::PosOrder{ {0.15,Point(1,1)},{0.15,Point(0,1)} },
 		true
 	);
 
-	// ジャンプのアニメーション
-	const Oni::Animation JAMP_ANIM
+	// 落ちるときのアニメーション
+	const Oni::Animation FALL_ANIM
 	(
-		Oni::PosOrder{ {0,Point(1,1)} },
+		Oni::PosOrder{ {0,Point(2,1)} },
 		false
 	);
 }
@@ -81,7 +81,7 @@ namespace Oni
 		mSlide.setAnimation(U"Wait", WAIT_ANIM);
 		mSlide.setAnimation(U"Walk", WALK_ANIM);
 		mSlide.setAnimation(U"OneWalk", ONE_WALK_ANIM);
-		mSlide.setAnimation(U"Jamp", JAMP_ANIM);
+		mSlide.setAnimation(U"Fall", FALL_ANIM);
 
 		mDirection = -1;
 
@@ -180,7 +180,7 @@ namespace Oni
 		else
 		{
 			// 空中
-			mSlide.startAnotherAnimation(U"Jamp");
+			mSlide.startAnotherAnimation(U"Fall");
 		}
 
 		// 向きの更新
