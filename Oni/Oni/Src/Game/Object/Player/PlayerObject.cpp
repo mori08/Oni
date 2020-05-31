@@ -14,7 +14,9 @@ namespace
 	// 初期体力
 	constexpr double INIT_HP = 100;
 	// 歩く速さ
-	constexpr double WALK_SPEED = 120;
+	constexpr double WALK_SPEED = 60;
+	// 走る速さ
+	constexpr double RUN_SPEED = 120;
 	// ジャンプの初速度の大きさ (z軸方向で3.5マスくらい)
 	constexpr double JAMP_SPEED = 200;
 	// 重力加速度
@@ -114,6 +116,9 @@ namespace Oni
 
 	void PlayerObject::control()
 	{
+		// 向きの固定について
+		bool isFixedDirection = MouseR.pressed();
+
 		// 移動量の決定
 		const Vec3 groundPos = Vec3(mCollider.centerPos().xy(), GameManager::instance().getStage().height(mCollider));
 		Vec2 movement = Cursor::PosF() - GameManager::drawPos(groundPos);
@@ -123,7 +128,7 @@ namespace Oni
 		}
 		else if (movement.length() > WALK_DISTANCE)
 		{
-			movement = WALK_SPEED * movement.normalize();
+			movement = (isFixedDirection ? WALK_SPEED : RUN_SPEED) * movement.normalize();
 		}
 		else
 		{
@@ -133,12 +138,6 @@ namespace Oni
 		// XY平面方向での移動速度の設定
 		mCollider.setVelocity(Collider::X, movement.x);
 		mCollider.setVelocity(Collider::Y, movement.y);
-
-		// ジャンプ
-		if (mCollider.isOnGround() && MouseR.down())
-		{
-			mCollider.setVelocity(Collider::Z, JAMP_SPEED);
-		}
 
 		// 攻撃
 		if (MouseL.pressed())
@@ -184,7 +183,7 @@ namespace Oni
 		}
 
 		// 向きの更新
-		if (mDirection * movement.x < 0)
+		if (mDirection * movement.x < 0 && !isFixedDirection)
 		{
 			mDirection *= -1;
 			mSlide.mirror();
