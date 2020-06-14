@@ -22,6 +22,7 @@ namespace
 
 void Main()
 {
+	
 	// ウィンドウの設定
 	Window::Resize(WINDOW_SIZE);
 	Window::SetTitle(U"鬼");
@@ -37,7 +38,7 @@ void Main()
 	FontAsset::Register(U"30", 30, Typeface::Medium);
 	FontAsset::Register(U"40", 40, Typeface::Medium);
 	Oni::registerAsset(U"Asset/");
-
+	
 	// シーンの管理
 	MyApp sceneManager;
 	sceneManager.add<Oni::TitleScene>     (SceneName::TITLE);
@@ -47,9 +48,10 @@ void Main()
 	sceneManager.add<Oni::LoadGameScene>  (SceneName::LOAD_GAME);
 	sceneManager.add<Oni::GameScene>      (SceneName::GAME);
 
+	
 	// Gameの準備
 	Oni::GameManager::instance().getEvent().load(U"Asset/Data/Event/");
-
+	
 	while (System::Update())
 	{
 		sceneManager.update();

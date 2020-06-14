@@ -122,17 +122,11 @@
     <Filter Include="Src\Game\ObjectData">
       <UniqueIdentifier>{7b934e01-a344-466d-a38b-9e7415fa76b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Game\ObjectData\Battle">
-      <UniqueIdentifier>{b794c830-5a83-4a63-969b-bac10ae42375}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Game\Object\GhostGirl">
       <UniqueIdentifier>{ce8731b1-d86d-4cf9-9cd9-af38c92c9b23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Game\State">
       <UniqueIdentifier>{95732ff2-eb0d-4bde-b024-4c6c3fb413ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Game\State\Battle">
-      <UniqueIdentifier>{d5aa70e4-c077-4224-9101-d02cc62312dd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Game\Stage">
       <UniqueIdentifier>{455f76fd-46ce-4f20-a942-c66aed35f800}</UniqueIdentifier>
@@ -151,9 +145,6 @@
     </Filter>
     <Filter Include="Src\Game\Board\Text">
       <UniqueIdentifier>{eeab6ed8-c8bc-48c1-a580-a5972f4e9cda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Game\Object\PlayerAttack">
-      <UniqueIdentifier>{42fbab26-ae4a-4baf-bbd1-1bb5ecca9599}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -462,9 +453,6 @@
     <ClCompile Include="Src\Game\Collider\Collider.cpp">
       <Filter>Src\Game\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\ObjectData\Battle\ObjectBattleData.cpp">
-      <Filter>Src\Game\ObjectData\Battle</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Slice\Animation.cpp">
       <Filter>Src\Slice</Filter>
     </ClCompile>
@@ -473,9 +461,6 @@
     </ClCompile>
     <ClCompile Include="Src\Game\Object\GhostGirl\GhostGirlObject.cpp">
       <Filter>Src\Game\Object\GhostGirl</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\State\Battle\GameBattleState.cpp">
-      <Filter>Src\Game\State\Battle</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Stage\StageSupport.cpp">
       <Filter>Src\Game\Stage</Filter>
@@ -494,9 +479,6 @@
     </ClCompile>
     <ClCompile Include="Src\Game\Board\Text\TextBoard.cpp">
       <Filter>Src\Game\Board\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Object\PlayerAttack\PlayerAttackObject.cpp">
-      <Filter>Src\Game\Object\PlayerAttack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -560,9 +542,6 @@
     <ClInclude Include="Src\Slice\SliceTexture.hpp">
       <Filter>Src\Slice</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\ObjectData\Battle\ObjectBattleData.hpp">
-      <Filter>Src\Game\ObjectData\Battle</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Slice\Animation.hpp">
       <Filter>Src\Slice</Filter>
     </ClInclude>
@@ -574,9 +553,6 @@
     </ClInclude>
     <ClInclude Include="Src\Game\State\GameState.hpp">
       <Filter>Src\Game\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\State\Battle\GameBattleState.hpp">
-      <Filter>Src\Game\State\Battle</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Stage\StageSupport.hpp">
       <Filter>Src\Game\Stage</Filter>
@@ -595,9 +571,6 @@
     </ClInclude>
     <ClInclude Include="Src\Game\Board\Text\TextBoard.hpp">
       <Filter>Src\Game\Board\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Object\PlayerAttack\PlayerAttackObject.hpp">
-      <Filter>Src\Game\Object\PlayerAttack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

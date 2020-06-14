@@ -59,7 +59,7 @@ namespace Oni
 	{
 		// エラーでストップ
 		if (mError) { return; }
-
+		
 		// 待ち
 		mWaitSecond -= Scene::DeltaTime();
 		if (mWaitSecond > 0) { return; }
@@ -70,7 +70,7 @@ namespace Oni
 			if (mTextBoard->selectedUpdate()) { mTextBoard = nullptr; }
 			return;
 		}
-
+		
 		// 読み込める行がまだあるか確認
 		if (mReadingRow >= mData[mEventName].size()) { return; }
 		

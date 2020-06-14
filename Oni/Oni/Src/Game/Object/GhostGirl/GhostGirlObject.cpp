@@ -26,7 +26,7 @@ namespace Oni
 			SliceTexture(U"GhostGirl", TEXTURE_SIZE)
 		)
 	{
-		mBattleData = ObjectBattleData(INIT_HP);
+		
 	}
 
 }

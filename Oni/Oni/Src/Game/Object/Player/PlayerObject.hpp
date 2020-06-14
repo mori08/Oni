@@ -26,11 +26,7 @@ namespace Oni
 
 	private:
 
-		void updateBattle() override;
-
 		void draw() const override;
-
-		void checkAnother(const ObjectBattleData::CheckInfo& checkInfo) override;
 
 	public:
 
@@ -38,23 +34,6 @@ namespace Oni
 		/// ‘Ò‚¿ó‘Ô(ƒoƒgƒ‹‚Åg—p)
 		/// </summary>
 		void control();
-
-	private:
-
-		/// <summary>
-		/// 3˜AUŒ‚
-		/// </summary>
-		void tripleAttack();
-
-		/// <summary>
-		/// ‰ñ“]UŒ‚
-		/// </summary>
-		void spinAttack();
-
-		/// <summary>
-		/// ’ÇÕUŒ‚
-		/// </summary>
-		void chaseAttack();
 
 	};
 

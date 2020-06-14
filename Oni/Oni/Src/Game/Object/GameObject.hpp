@@ -3,7 +3,6 @@
 
 #include "../Collider/Collider.hpp"
 #include "../ObjectType/ObjectType.hpp"
-#include "../ObjectData/Battle/ObjectBattleData.hpp"
 #include "../ObjectData/Event/ObjectEventData.hpp"
 #include "../../Slice/SliceTexture.hpp"
 
@@ -25,9 +24,6 @@ namespace Oni
 
 		// オブジェクトの種類
 		ObjectType mType;
-
-		// バトル用のデータ
-		Optional<ObjectBattleData> mBattleData;
 
 		// イベント用のデータ
 		Optional<ObjectEventData> mEventData;
@@ -60,11 +56,6 @@ namespace Oni
 	public:
 
 		/// <summary>
-		/// バトル時の更新
-		/// </summary>
-		virtual void updateBattle();
-
-		/// <summary>
 		/// イベント時の更新
 		/// </summary>
 		virtual void updateEvent();
@@ -94,12 +85,6 @@ namespace Oni
 		void drawCollider() const;
 
 		/// <summary>
-		/// 他のオブジェクトへ判定の譲渡(バトルでの使用)
-		/// </summary>
-		/// <param name="another"> 他オブジェクト </param>
-		virtual void passAnother(GameObject& another) const;
-
-		/// <summary>
 		/// 名前の取得
 		/// </summary>
 		const String& getName() const
@@ -116,41 +101,12 @@ namespace Oni
 			return mEventData;
 		}
 
-		/// <summary>
-		/// 他のオブジェクトの判定を受取(バトルでの使用)
-		/// </summary>
-		/// <param name="checkInfo">  </param>
-		virtual void checkAnother(const ObjectBattleData::CheckInfo& chekcInfo);
-
 	protected:
 
 		/// <summary>
 		/// ColliderとSliceTextureから画像を描画する座標を決定
 		/// </summary>
 		Point getDrawTexturePoint() const;
-
-		/// <summary>
-		/// オブジェクトの種類と衝突の判定
-		/// </summary>
-		/// <param name="checkInfo"> 判定確認用の情報 </param>
-		/// <param name="checkType"> 指定する種類     </param>
-		/// <returns>
-		/// 指定の種類のオブジェクトかつ衝突しているとき true , そうでないとき false
-		/// </returns>
-		bool checkTypeAndCollision(const ObjectBattleData::CheckInfo& checkInfo, const ObjectType& checkType) const
-		{
-			return (checkInfo.type & checkType) && mCollider.intersects(checkInfo.collider);
-		}
-
-		/// <summary>
-		/// 指定の種類のオブジェクトのとき座標の取得
-		/// </summary>
-		/// <param name="checkInfo"> 判定確認用の情報 </param>
-		/// <param name="checkType"> 指定する種類     </param>
-		/// <returns>
-		/// 座標
-		/// </returns>
-		static Optional<Vec3> checkTypeAndGetPos(const ObjectBattleData::CheckInfo& checkInfo, const ObjectType& checkType);
 
 	};
 

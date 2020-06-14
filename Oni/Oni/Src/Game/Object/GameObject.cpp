@@ -12,23 +12,9 @@ namespace Oni
 		, mType(type)
 		, mSlide(slide)
 		, mIsHiding(true)
-		, mBattleData(none)
 		, mEventData(none)
 	{
 
-	}
-
-
-	void GameObject::updateBattle()
-	{
-		mCollider.update();
-
-		if (mBattleData)
-		{
-			mBattleData->update();
-		}
-
-		mSlide.update();
 	}
 
 
@@ -76,25 +62,6 @@ namespace Oni
 	}
 
 
-	void GameObject::passAnother(GameObject& another) const
-	{
-		if (!mBattleData || !mIsHiding) { return; }
-
-		another.checkAnother(ObjectBattleData::CheckInfo(mCollider, mType, 0));
-
-		for (const auto& checkInfo : mBattleData->getCheckInfoList())
-		{
-			another.checkAnother(checkInfo);
-		}
-	}
-
-
-	void GameObject::checkAnother(const ObjectBattleData::CheckInfo&)
-	{
-		
-	}
-
-
 	Point GameObject::getDrawTexturePoint() const
 	{
 		Vec2 rtn = GameManager::instance().drawPos(mCollider.centerPos());
@@ -103,16 +70,6 @@ namespace Oni
 		rtn.y += mCollider.size().z / 2 - mSlide.getSliceSize().y;
 		
 		return rtn.asPoint();
-	}
-
-
-	Optional<Vec3> GameObject::checkTypeAndGetPos(const ObjectBattleData::CheckInfo& checkInfo, const ObjectType& checkType)
-	{
-		if (checkInfo.type & checkType)
-		{
-			return checkInfo.collider.centerPos();
-		}
-		return none;
 	}
 
 }

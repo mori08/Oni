@@ -3,7 +3,6 @@
 #include "../MyColor.hpp"
 
 // 状態
-#include "State/Battle/GameBattleState.hpp"
 #include "State/Event/GameEventState.hpp"
 
 // オブジェクト
@@ -23,7 +22,7 @@ namespace Oni
 
 	GameManager::GameManager()
 	{
-		mState = std::make_unique<GameBattleState>();
+		
 	}
 
 
@@ -109,7 +108,7 @@ namespace Oni
 		{
 			mObjectNameMap[object->getName()] = object;
 		}
-		mState = std::make_unique<GameBattleState>();
+		mState = std::make_unique<GameEventState>(U"TestEvent");
 
 		return true;
 	}
