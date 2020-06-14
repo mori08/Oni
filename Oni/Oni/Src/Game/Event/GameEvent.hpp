@@ -87,6 +87,11 @@ namespace Oni
 		void actObject();
 
 		/// <summary>
+		/// オブジェクトのアニメーション開始
+		/// </summary>
+		void startAnim();
+
+		/// <summary>
 		/// テキストの表示
 		/// </summary>
 		void setText();

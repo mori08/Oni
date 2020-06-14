@@ -1,7 +1,15 @@
-﻿Wait,0.5,,
+﻿Act,Player,Wait,
+Wait,0.5,,
+Act,Player,Mirror,
+Act,Player,Walk,
 Move,Player,5,"(90,0,0)"
-Wait,8,,
+Wait,5,,
+Act,Player,Wait,
+Wait,3,,
+Act,Player,Walk,
 Act,Player,Mirror,
 Move,Player,5,"(-90,0,0)"
+Wait,5,,
+Act,Player,Wait,
 Text,,話し手,マイクテスト\nマイクテスト\n本日は晴天なり
 Move,Player,5,"(90,0,0)"

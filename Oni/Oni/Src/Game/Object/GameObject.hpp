@@ -108,6 +108,13 @@ namespace Oni
 		/// </summary>
 		Point getDrawTexturePoint() const;
 
+		/// <summary>
+		/// アニメーションを設定する
+		/// </summary>
+		/// <param name="name"> 名前           </param>
+		/// <param name="anim"> アニメーション </param>
+		void setAnim(const String& name, const Animation& anim);
+
 	};
 
 	using GameObjectPtr = std::shared_ptr<GameObject>;

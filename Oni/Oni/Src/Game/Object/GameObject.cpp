@@ -72,4 +72,15 @@ namespace Oni
 		return rtn.asPoint();
 	}
 
+
+	void GameObject::setAnim(const String& name,const Animation& anim)
+	{
+		mSlide.setAnimation(name, anim);
+
+		if (mEventData)
+		{
+			mEventData->setAct(name, [name, this]() { mSlide.start(name); });
+		}
+	}
+
 }

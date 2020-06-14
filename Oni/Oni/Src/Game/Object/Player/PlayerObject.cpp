@@ -24,11 +24,6 @@ namespace
 	constexpr double WALK_DISTANCE = 10.0;
 
 
-	// 攻撃の速さ
-	constexpr double LIGHT_SPEED = 300;
-	// 1つ分のチャージに必要な時間(s)
-	constexpr double ONE_CHARGE_TIME = 1.0;
-
 	// 待ち状態のアニメーション
 	const Oni::Animation WAIT_ANIM
 	(
@@ -75,10 +70,10 @@ namespace Oni
 
 		mCollider.setAcceleration(Collider::Z, -GRAVITY);
 
-		mSlide.setAnimation(U"Wait", WAIT_ANIM);
-		mSlide.setAnimation(U"Walk", WALK_ANIM);
-		mSlide.setAnimation(U"OneWalk", ONE_WALK_ANIM);
-		mSlide.setAnimation(U"Fall", FALL_ANIM);
+		setAnim(U"Wait", WAIT_ANIM);
+		setAnim(U"Walk", WALK_ANIM);
+		setAnim(U"OneWalk", ONE_WALK_ANIM);
+		setAnim(U"Fall", FALL_ANIM);
 
 		mDirection = -1;
 

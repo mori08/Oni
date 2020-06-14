@@ -196,6 +196,24 @@ namespace Oni
 		objectPtr.value()->getEventData()->act(actName);
 	}
 
+	
+	void GameEvent::startAnim()
+	{
+		// オブジェクトの名前 (1列目)
+		const String objName = mData[mEventName][mReadingRow][1];
+
+		// 演出名 (2列目)
+		const String actName = mData[mEventName][mReadingRow][2];
+
+		auto objectPtr = GameManager::instance().getObject(objName);
+		if (!objectPtr)
+		{
+			outputErrorMessage(U"actObject");
+			printDebug(U"オブジェクト " + objName + U" がみつかりません");
+			return;
+		}
+	}
+
 
 	void GameEvent::setText()
 	{

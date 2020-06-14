@@ -8,6 +8,8 @@ namespace Oni
 		: mMoveSecond(0)
 	{
 		mActMap[U"Mirror"] = [&slide](){ slide.mirror(); };
+		
+
 	}
 
 
