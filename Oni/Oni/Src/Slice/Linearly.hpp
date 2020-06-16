@@ -99,7 +99,7 @@ namespace Oni
 		/// </summary>
 		Type getValue() const
 		{
-			return mValue.first + mRate * mValue.second;
+			return Type(mValue.first + mRate * mValue.second);
 		}
 
 		/// <summary>

@@ -20,7 +20,7 @@ namespace
 	};
 
 	// カーソル移動の比
-	constexpr double CURSOR_RATE = 0.005;
+	constexpr double CURSOR_RATE = 0.001;
 }
 
 
@@ -43,6 +43,13 @@ namespace Oni
 		(
 			NEWGAME_BUTTON.getName(),
 			[this]() { changeScene(SceneName::LOAD_GAME); }
+		);
+
+		// ボタンの位置関係の設定
+		ButtonManager::instance().setVerticalAdjacentButton
+		(
+			NEWGAME_BUTTON.getName(),
+			CONTINUE_BUTTON.getName()
 		);
 
 		// 選択中のボタンの設定

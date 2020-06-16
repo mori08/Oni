@@ -51,6 +51,20 @@ namespace
 		Oni::PosOrder{ {0,Point(2,1)} },
 		false
 	);
+
+	// 眠り状態のアニメーション
+	const Oni::Animation SLEEP_ANIM
+	(
+		Oni::PosOrder{ {0,Point(0,2)} },
+		false
+	);
+
+	// 起きあがるときのアニメーション
+	const Oni::Animation WAKE_ANIM
+	(
+		Oni::PosOrder{ {0.5,Point(1,2)},{0.5,Point(0,1)} },
+		false
+	);
 }
 
 

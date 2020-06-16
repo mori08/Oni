@@ -1,4 +1,5 @@
 #include "TextBoard.hpp"
+#include "../../../Button/ButtonManager.hpp"
 
 
 namespace
@@ -49,7 +50,7 @@ namespace Oni
 	{
 		const bool isEnd = mDrawAbleLength.update();
 
-		if (KeyZ.up())
+		if (ButtonManager::ok())
 		{
 			if (isEnd) { return true; }
 
