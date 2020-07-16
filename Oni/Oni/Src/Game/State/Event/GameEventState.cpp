@@ -29,7 +29,9 @@ namespace Oni
 
 	void GameEventState::draw() const
 	{
-		GameManager::instance().getStage().draw(GameManager::instance().drawPos(Vec3::Zero()));
+		//GameManager::instance().getStage().draw(GameManager::instance().drawPos(Vec3::Zero()));
+
+
 
 		// オブジェクトの描画
 		for (const auto& obj : GameManager::instance().getObjectList())

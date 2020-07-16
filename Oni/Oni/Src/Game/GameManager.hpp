@@ -36,6 +36,9 @@ namespace Oni
 		// ステージ
 		StageSupport mStageSupport;
 
+		// 背景画像名
+		String mBackGroundName;
+
 		// イベント
 		GameEvent mEvent;
 

@@ -43,7 +43,7 @@ namespace Oni
 		int32 readingRow = 0;
 		Size stageSize;
 
-		// ステージの大きさの設定
+		// ステージの大きさの設定 (0列目)
 		try
 		{
 			stageSize = Parse<Point>(csv[readingRow][0]);
@@ -57,6 +57,9 @@ namespace Oni
 			printDebug(U"row > " + ToString(readingRow));
 			return false;
 		}
+
+		// ステージの背景画像の設定 (1列目)
+		mBackGroundName = csv[readingRow][1];
 
 		// ステージの高さの設定
 		for (int32 y : Range(0, stageSize.y - 1))
@@ -103,7 +106,6 @@ namespace Oni
 		mObjectList.clear();
 
 		mObjectList.emplace_back(std::make_shared<PlayerObject>(Vec3(100, 100, 0)));
-		mObjectList.emplace_back(std::make_shared<GhostGirlObject>(Vec3(100, 100, 0)));
 		for (const auto& object : mObjectList)
 		{
 			mObjectNameMap[object->getName()] = object;
